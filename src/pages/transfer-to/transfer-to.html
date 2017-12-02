@@ -1,0 +1,52 @@
+<ion-header no-padding>
+  <ion-navbar>
+    <ion-title text-center>
+      Transferir a
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item-divider color="inv-brand-logo">
+      Mis cuentas
+    </ion-item-divider>
+    <ion-item (click)="goTo('TransferAddPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/logo.png">
+      </ion-avatar>
+      Cuenta monetaria
+      <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item (click)="goTo('TransferAddPage')">
+      <ion-avatar item-start class="inv-avatar-square">
+        <img src="assets/imgs/mastercard.jpg">
+      </ion-avatar>
+      Tarjeta #2082
+      <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item-divider color="inv-text-light">
+      Cuentas ACH
+    </ion-item-divider>
+    <ion-item (click)="goTo('TransferAddPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/thirdbank.png">
+      </ion-avatar>
+      Juan Perez
+      <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item (click)="goTo('TransferAddPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/thirdbank.png">
+      </ion-avatar>
+      Lester Sanchéz
+      <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item (click)="goTo('TransferAddPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/logo.png">
+      </ion-avatar>
+      Maria Jimenez
+      <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

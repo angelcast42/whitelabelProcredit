@@ -1,0 +1,21 @@
+page-dashboard {
+  .menu {
+    ion-item {
+      color: color($colors, 'inv-text-dark');
+    }
+    ion-icon{
+      margin-right: 10px;
+      width: 25px;
+    }
+  }
+  .dashboard {
+    color: color($colors, 'inv-text-dark');
+    ion-icon {
+      font-size: 4em;
+    }
+  }
+  .header-logo {
+    height: 60px;
+    margin: 0;
+  }
+}

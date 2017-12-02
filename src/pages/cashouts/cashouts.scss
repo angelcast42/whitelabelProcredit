@@ -1,0 +1,11 @@
+page-cashouts {
+  .cashouts {
+    p, .small {
+      font-size: 0.8rem;
+      color: color($colors, 'inv-text-light');
+    }
+    .small {
+      margin-left: 6px;
+    }
+  }
+}

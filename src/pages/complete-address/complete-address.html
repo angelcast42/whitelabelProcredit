@@ -1,0 +1,45 @@
+<ion-header no-padding>
+    <ion-navbar text-center>
+      <ion-title class="inv-font-regular inv-color-gray-dark">
+        Mi perfil
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content class="inv-container" isScrolling="false" no-padding>
+    <ion-grid  no-margin no-padding>
+      <ion-row class="inv-compose-row" wrap>
+        <ion-col col-12 text-center>
+          <img class="inv-avatar" src="assets/imgs/ana.png" alt="Cuenta de ahorro"/>            
+          <h3 class="inv-compose-name inv-font-regular inv-compose-name-standar">Ana Franco</h3>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inv-compose-row" wrap>
+          <ion-col col-12 text-center>          
+            <h3 class="inv-compose-name inv-font-bold inv-compose-name-standar">Dirección</h3>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="inv-compose-row inv-font-regular" wrap>
+            <ion-col col-12 text-center>   
+                  <ion-list no-margin no-padding>
+                    <ion-item>
+                      <ion-label floating> </ion-label>
+                      <ion-input type="text" value=""></ion-input>
+                    </ion-item>
+                  </ion-list>
+                  <div text-center padding>
+                      <button class="inv-btn" ion-button color="inv-brand-logo" (click)="goTo('DashboardPage')" icon-end>
+                        Continuar <ion-icon name="ios-arrow-round-forward"></ion-icon>
+                      </button>
+                    </div>
+            </ion-col>
+          </ion-row>
+
+    </ion-grid>  
+    
+
+
+</ion-content>

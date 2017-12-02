@@ -1,0 +1,21 @@
+<ion-content>
+    <div padding>
+      <img class="logo" src="assets/imgs/logonicaragua.png" alt="Banco Whitelabel">
+    </div>
+    <div text-center padding>
+        <h3 class="register-title">Registrarme</h3>
+        <h3 class="register-subtitle">Nombre completo</h3>
+      </div>
+    <ion-list>
+      <ion-item class="register-icon">
+        <ion-label class="register-input-name" floating><ion-icon name="md-person"></ion-icon> Nombre completo</ion-label>
+        <ion-input class="register-input" type="text"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div text-center padding>
+      <button ion-button color="inv-brand-logo" class="inv-btn" (click)="goTo('RegisterMailPage')" icon-end>
+        Continuar <ion-icon name="ios-arrow-round-forward"></ion-icon>
+      </button>
+    </div>
+  </ion-content>
+    

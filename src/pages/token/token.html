@@ -1,0 +1,26 @@
+<ion-content padding>
+  <div padding>
+    <img class="logo" src="assets/imgs/logonicaragua.png" width="" alt="">
+  </div>
+  <div text-center class="box-title" padding>
+    <h5 class="register-title">Valida tu</h5>
+    <p class="register-subtitle" color="gray-neutral">Token de acceso</p>
+  </div>
+  <ion-list>
+    <ion-item class="register-icon-token">
+      <ion-label floating class="inv-font-regular">
+        <ion-icon name="key"></ion-icon> Token de Acceso
+      </ion-label>
+      <ion-input class="register-input-pass" type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div text-center padding>
+    <button class="inv-back" ion-button color="inv-brand-logo" (click)="goTo('RegisterPhoneConfirmPage')">
+      <ion-icon name="ios-arrow-round-back"></ion-icon>
+    </button>
+    <button class="inv-btn" ion-button color="inv-brand-logo" (click)="goTo('DashboardPage')" icon-end>
+      Continuar
+      <ion-icon name="ios-arrow-round-forward"></ion-icon>
+    </button>
+  </div>
+</ion-content>

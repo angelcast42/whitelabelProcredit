@@ -1,0 +1,38 @@
+<ion-header no-padding>
+    <ion-navbar text-center>
+      <ion-title class="inv-font-regular inv-color-gray-dark">
+        Confirmar retiro
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+<ion-content class="inv-container" isScrolling="false" no-padding>
+        <ion-list>
+
+            <ion-item class="inv-font-regular">
+                <ion-avatar item-start>
+                  <img src="assets/imgs/logo.png">
+                </ion-avatar>
+                <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">Cuenta monetaria</h2>
+                <p class="inv-font-bold inv-color-gray-dark margin-left">xxxxxxx2017</p>
+              </ion-item>
+
+
+            <ion-item class="inv-font-regular">
+              Monto
+              <ion-badge item-end color="inv-brand-logo" class="inv-font-regular">Q 100.00</ion-badge>
+            </ion-item>
+            <ion-item class="inv-font-regular">
+              Comisión
+              <ion-badge item-end color="danger" class="inv-font-regular">Q 5.00</ion-badge>
+            </ion-item>
+              <ion-item class="inv-font-regular">
+              Total
+              <ion-badge item-end color="inv-text-light" class="inv-font-regular">Q 105.00</ion-badge>
+            </ion-item>
+          </ion-list>
+</ion-content>
+<ion-footer no-padding>
+    <button ion-button block large no-margin icon-end color="inv-brand-logo" class="animated bounce inv-font-regular" (click)="goTo('CashoutPinPage')">
+        Continuar <ion-icon name="ios-arrow-round-forward"></ion-icon>
+    </button>
+</ion-footer>

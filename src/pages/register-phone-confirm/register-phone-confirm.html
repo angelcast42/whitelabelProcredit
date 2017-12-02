@@ -1,0 +1,76 @@
+<ion-header no-padding>
+    <ion-navbar text-center>
+      <ion-title class="inv-font-bold">
+        Registro
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="inv-container" isScrolling="false" no-padding>
+    <ion-grid class="inv-compose" no-margin no-padding>
+      <ion-row class="inv-compose-row" wrap align-items-center>
+        <ion-col text-center>
+          <h3 class="inv-compose-title inv-font-regular">Código de verificación</h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
+  </ion-content>
+  <ion-footer class="container-keypad theme-transfer" no-padding>
+  <ion-grid class="inv-keypad" no-margin no-padding>
+    <ion-row wrap>
+      <ion-col class="keypad-info">
+        <h1 class="inv-keypad-input inv-font-regular" text-center>
+            {{amount}}
+        </h1>
+      </ion-col>        
+    </ion-row>
+    <ion-row wrap>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('1')">1</button>
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('2')">2</button>
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('3')">3</button>
+      </ion-col>
+    </ion-row>
+    <ion-row wrap>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('4')">4</button>
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('5')">5</button>
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('6')">6</button>
+      </ion-col>
+    </ion-row>
+    <ion-row wrap>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('7')">7</button>
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('8')">8</button>
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('9')">9</button>
+      </ion-col>
+    </ion-row>
+    <ion-row wrap>
+      <ion-col width-33>
+      </ion-col>
+      <ion-col width-33>
+        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('0')">0</button>
+      </ion-col>
+      <ion-col width-33>
+      <button ion-button color="white" class="inv-keypad-item" block clear text-center large no-margin icon-only (click)="append('backspace')">
+        <ion-icon  color="white" ios="ios-backspace-outline" md="md-backspace"></ion-icon>
+      </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <button ion-button block large no-margin icon-end color="inv-brand-logo" class="animated bounce inv-font-regular" (click)="goTo('TokenPage')">
+    Confirmar <ion-icon name="ios-arrow-round-forward"></ion-icon>
+  </button>
+  </ion-footer>
+  

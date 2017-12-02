@@ -1,0 +1,40 @@
+<ion-header no-padding>
+    <ion-navbar text-center>
+      <ion-title class="inv-font-regular inv-color-gray-dark">
+        Remesas
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="remittances">
+    <ion-list>
+      <ion-item>
+        <h3>Remitente: Juan Perez</h3>
+        <p>Confirmación #155515 <ion-badge class="small" color="inv-background">en proceso</ion-badge></p>
+        <p>Hace 3 días</p>
+        <ion-badge color="inv-brand-logo" item-end>Q 1000.00</ion-badge>
+      </ion-item>
+      <ion-item>
+        <h3>Remitente: Marina Perez</h3>
+        <p>Confirmación #5519 <ion-badge class="small" color="inv-background">rechazada</ion-badge></p>
+        <p>Hace 8 días</p>
+        <ion-badge color="inv-brand-logo" item-end>Q 500.00</ion-badge>
+      </ion-item>
+      <ion-item>
+        <h3>Remitente: Marina Perez</h3>
+        <p>Confirmación #23017 <ion-badge class="small" color="inv-background">recibida</ion-badge></p>
+        <p>Hace 14 días</p>
+        <ion-badge color="inv-brand-logo" item-end>Q 800.00</ion-badge>
+      </ion-item>
+      <ion-item>
+        <h3>Remitente: Juan Perez</h3>
+        <p>Confirmación #19021 <ion-badge class="small" color="inv-background">recibida</ion-badge></p>
+        <p>Hace 26 días</p>
+        <ion-badge color="inv-brand-logo" item-end>Q 200.00</ion-badge>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer no-padding>
+    <button ion-button large full icon-end color="inv-brand-logo" (click)="goTo('RemittanceAddPage')">
+      Recibir remesa <ion-icon name="ios-arrow-round-forward"></ion-icon>
+    </button>
+  </ion-footer>

@@ -1,0 +1,31 @@
+<ion-content>
+  <div padding>
+    <img class="logo" src="assets/imgs/logonicaragua.png" alt="Banco Procredit">
+  </div>
+  <ion-list>
+    <ion-item class="register-icon">
+      <ion-label floating class="inv-font-regular">
+        <ion-icon name="md-mail-open"></ion-icon> Correo electrónico</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+    <ion-item class="register-icon-left">
+      <ion-label floating class="inv-font-regular">
+        <ion-icon name="md-lock"></ion-icon><span>   Contraseña</span></ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 text-center>
+        <button ion-button full color="inv-background" class="inv-btn" (click)="goTo('RegisterNamePage')" icon-end>
+          Crear mi cuenta
+        </button>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <button ion-button full color="inv-brand-logo" class="inv-btn" (click)="goTo('DashboardPage')" icon-end>
+          Iniciar sesión <ion-icon name="ios-arrow-round-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

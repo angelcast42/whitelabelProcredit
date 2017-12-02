@@ -1,0 +1,36 @@
+<ion-header no-padding>
+  <ion-navbar text-center>
+    <ion-title class="inv-font-regular inv-color-gray-dark">Retiro de efectivo</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item-divider color="inv-brand-logo">
+      Elige una cuenta
+    </ion-item-divider>
+    <ion-item (click)="goTo('CashoutAmountPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/logo.png">
+      </ion-avatar>
+      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">Cuenta monetaria</h2>
+      <p class="inv-font-bold inv-color-gray-dark margin-left">xxxxxxx2017</p>
+      <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item (click)="goTo('CashoutAmountPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/logo.png">
+      </ion-avatar>
+      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left" >Cuenta de ahorro</h2>
+      <p class="inv-font-bold inv-color-gray-dark margin-left">xxxxxxx2036</p>
+      <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item (click)="goTo('CashoutAmountPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/mastercard.jpg" class="logo-visa">
+      </ion-avatar>
+      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">Tarjeta de crédito</h2>
+      <p class="inv-font-bold inv-color-gray-dark margin-left">xxxxxxx3810</p>
+      <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

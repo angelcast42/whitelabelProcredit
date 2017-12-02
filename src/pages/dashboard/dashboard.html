@@ -1,0 +1,74 @@
+<ion-menu [content]="leftmenu">
+    <ion-content class="menu" no-padding>
+        <ion-list >
+            <ion-item-divider padding color="inv-brand-logo">
+                <h2>Servicios</h2>
+            </ion-item-divider>
+            <ion-item (click)="goTo('AccountsPage')">
+                <ion-icon name="md-grid"></ion-icon>
+                Mis cuentas
+            </ion-item>
+            <ion-item (click)="goTo('TransfersPage')">
+                <ion-icon name="md-swap"></ion-icon>
+                Transferencias
+            </ion-item>
+            <ion-item (click)="goTo('CashoutsPage')">
+                <ion-icon name="md-cash"></ion-icon>
+                Retiros de efectivo
+            </ion-item>
+            <ion-item (click)="goTo('NetworkInvPage')">
+                <ion-icon name="md-pin"></ion-icon>
+                Red de pago
+            </ion-item>    
+            <ion-item (click)="goTo('LoginPage')">
+                <ion-icon name="ios-log-out-outline"></ion-icon>
+                Cerrar Sesión
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-header no-padding>
+    <ion-navbar>
+        <button ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-center>
+            <img class="header-logo" src="assets/imgs/logo.png" (click)="goTo('AccountsPage')" alt="Cuenta de ahorro" />
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content #leftmenu no-padding>
+    <ion-list>
+        <ion-item-divider *ngIf="true==false" text-center color="inv-brand-logo" (click)="goTo('CompleteIdPage')">
+            Completa tu perfil
+            <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+        </ion-item-divider>
+    </ion-list>
+    <ion-grid class="dashboard" no-margin no-padding>
+        <ion-row>
+            <ion-col col-6 text-center (click)="goTo('AccountsPage')">
+                <ion-icon name="md-grid"></ion-icon>
+                <p>Mis cuentas</p>
+            </ion-col>
+            <ion-col col-6 text-center (click)="goTo('TransferAddPage')">
+                <ion-icon name="md-swap"></ion-icon>
+                <p>Transferir</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-6 text-center (click)="goTo('CashoutsPage')">
+                <ion-icon name="md-cash"></ion-icon>
+                <p>Retirar efectivo</p>
+            </ion-col>
+            <ion-col col-6 text-center (click)="goTo('NetworkInvPage')">
+                <ion-icon name="md-pin"></ion-icon>
+                <p>Red de pago</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer>
+</ion-footer>
+      
