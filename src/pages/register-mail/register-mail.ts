@@ -15,12 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 
 export class RegisterMailPage {
+  user: any = {}
+  
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
+    this.user=navParams.data.user
   }
   goTo(page: string){
-    this.navCtrl.setRoot(page)
+    this.navCtrl.setRoot(page,{user:this.user})
   }
 }

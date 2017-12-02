@@ -44,11 +44,11 @@ export class AuthProvider {
   }
 
   // Email Auth
-  emailSignUp(email: string, password: string) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+  emailSignUp(detail) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(detail.email, detail.password)
       .then((user) => {
         this.authState = user
-        this.updateUserData()
+        this.updateUserData(detail)
       })
       .catch(error => console.log(error))
   }
@@ -57,7 +57,6 @@ export class AuthProvider {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
         this.authState = user
-        this.updateUserData()
       })
       .catch(error => console.log(error))
   }
@@ -78,17 +77,23 @@ export class AuthProvider {
   }
 
   // Helpers
-  private updateUserData(): void {
+  private updateUserData(detail): void {
     const path = `${schema.Users}/${this.currentUserId}` // Endpoint on firebase
     const userRef: AngularFireObject<any> = this.db.object(path)
 
     const data = {
       email: this.authState.email,
-      displayname: this.authState.displayName
+      displayname: this.authState.displayName,
+      name: detail.name,
+      phone: detail.phone,
+      token:detail.token
     }
 
     userRef.update(data)
       .catch(error => console.log(error))
 
+  }
+  auth(){
+    return this.afAuth.authState;
   }
 }

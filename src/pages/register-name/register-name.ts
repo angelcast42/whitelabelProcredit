@@ -15,12 +15,14 @@ import { RegisterMailPage } from '../register-mail/register-mail';
   templateUrl: 'register-name.html',
 })
 export class RegisterNamePage {
+  user: any = {}
+  
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
   }
   goTo(page: string){
-    this.navCtrl.push(page)
+    this.navCtrl.push(page,{user:this.user})
   }
 }

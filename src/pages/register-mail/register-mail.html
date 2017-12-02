@@ -9,7 +9,7 @@
   <ion-list>
     <ion-item class="register-icon">
       <ion-label class="register-input-name" floating><ion-icon name="md-mail-open"></ion-icon> Correo electrónico</ion-label>
-      <ion-input class="register-input" type="email"></ion-input>
+      <ion-input class="register-input" [(ngModel)]="user.mail" type="email"></ion-input>
     </ion-item>
   </ion-list>
   <div text-center padding>

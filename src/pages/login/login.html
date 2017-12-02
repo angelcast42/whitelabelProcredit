@@ -6,12 +6,12 @@
     <ion-item class="register-icon">
       <ion-label floating class="inv-font-regular">
         <ion-icon name="md-mail-open"></ion-icon> Correo electrónico</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
     <ion-item class="register-icon-left">
       <ion-label floating class="inv-font-regular">
         <ion-icon name="md-lock"></ion-icon><span>   Contraseña</span></ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
   </ion-list>
   <ion-grid>
