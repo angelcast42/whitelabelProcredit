@@ -45,6 +45,7 @@ export class AuthProvider {
 
   // Email Auth
   emailSignUp(detail) {
+    console.log("detail",detail)
     return this.afAuth.auth.createUserWithEmailAndPassword(detail.email, detail.password)
       .then((user) => {
         this.authState = user
@@ -78,20 +79,14 @@ export class AuthProvider {
 
   // Helpers
   private updateUserData(detail): void {
-    const path = `${schema.Users}/${this.currentUserId}` // Endpoint on firebase
-    const userRef: AngularFireObject<any> = this.db.object(path)
 
     const data = {
-      email: this.authState.email,
-      displayname: this.authState.displayName,
+      email: detail.email,
       name: detail.name,
       phone: detail.phone,
       token:detail.token
     }
-
-    userRef.update(data)
-      .catch(error => console.log(error))
-
+    firebase.database().ref('users/').push(data)
   }
   auth(){
     return this.afAuth.authState;

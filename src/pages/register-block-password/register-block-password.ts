@@ -19,11 +19,16 @@ export class RegisterBlockPasswordPage {
   }
 
   goTo(page: string) {
-    if(this.user.password===this.user.repassword){
-      this.navCtrl.push(page,{user:this.user})      
-    } 
+    if(this.user.password>5){
+      if(this.user.password===this.user.repassword){
+        this.navCtrl.push(page,{user:this.user})      
+      } 
+      else{
+        this.presentToast('Las contraseñas no coinciden por favor verifique.')
+      }
+    }
     else{
-      this.presentToast('Las contraseñas no coinciden por favor verifique.')
+      this.presentToast('La contraseña debe contener al menos 6 caracteres')
     }
   }
   presentToast(message:string) {

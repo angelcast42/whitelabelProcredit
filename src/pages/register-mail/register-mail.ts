@@ -24,6 +24,6 @@ export class RegisterMailPage {
     this.user=navParams.data.user
   }
   goTo(page: string){
-    this.navCtrl.setRoot(page,{user:this.user})
+    this.navCtrl.push(page,{user:this.user})
   }
 }
