@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ToastController} from 'ionic-angular'
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the RegisterPhonePage page.
@@ -16,7 +18,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class RegisterPhonePage {
   amount: number = 0;
   inputAmount: string = '0'
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user: any = {}
+  
+  constructor(public navCtrl: NavController,
+    private toastCtrl: ToastController,    
+  public userProvider: UserProvider,  
+  public navParams: NavParams) {
+    this.user=navParams.data.user
+    
   }
 
   append(item: string) {
@@ -65,7 +74,26 @@ export class RegisterPhonePage {
     }
   }
   goTo(page: string){
-    this.navCtrl.push(page)
+    console.log(this.inputAmount)
+    if(this.inputAmount.length<8){
+      this.presentToast('por favor ingresa un numero valido')
+    }
+    else{
+      this.user.phone=this.inputAmount
+      this.user.code=this.userProvider.sendMessage('+502',this.user.phone)
+      this.navCtrl.push('RegisterPhoneConfirmPage',{user:this.user})
+    }
   }
-
+  presentToast(message:string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+    });
+  
+    toast.present();
+  }
 }

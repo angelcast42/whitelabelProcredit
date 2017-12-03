@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ToastController} from 'ionic-angular'
 
 @IonicPage()
 @Component({
@@ -9,8 +10,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class RegisterPhoneConfirmPage {
   amount: number = 0;
   inputAmount: string = '0'
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  user: any = {}
+  
+  constructor(public navCtrl: NavController,
+    private toastCtrl: ToastController,        
+    public navParams: NavParams) {
+    this.user=navParams.data.user
+    console.log(this.user)    
+}
 
   append(item: string) {
     if (item == 'backspace') {
@@ -58,7 +65,23 @@ export class RegisterPhoneConfirmPage {
     }
   }
   goTo(page: string){
-    this.navCtrl.push(page)
+    if(this.user.code===this.inputAmount){
+      this.navCtrl.push(page,{user:this.user})      
+    }
+    else{
+      this.presentToast('El codigo es incorrecto, por favor verifica.')
+    }
   }
-
+  presentToast(message:string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+    });
+  
+    toast.present();
+  }
 }

@@ -1,3 +1,7 @@
+<ion-header no-padding>
+    <ion-navbar text-center>
+    </ion-navbar>
+  </ion-header>    
 <ion-content>
   <div padding>
     <img class="logo" src="assets/imgs/logonicaragua.png" alt="Banco Whitelabel">
@@ -9,7 +13,7 @@
   <ion-list>
     <ion-item class="register-icon">
       <ion-label class="register-input-name" floating><ion-icon name="md-mail-open"></ion-icon> Correo electrónico</ion-label>
-      <ion-input class="register-input" type="email"></ion-input>
+      <ion-input class="register-input" [(ngModel)]="user.email" type="email"></ion-input>
     </ion-item>
   </ion-list>
   <div text-center padding>

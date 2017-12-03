@@ -21,6 +21,8 @@ import { AuthProvider } from '../providers/auth/auth'
 import { UserProvider } from '../providers/user/user'
 import { AccountProvider } from '../providers/account/account'
 
+import { HttpModule } from '@angular/http'
+
 @NgModule({
   declarations: [
     WhitelabelApp
@@ -30,6 +32,7 @@ import { AccountProvider } from '../providers/account/account'
     AngularFireModule.initializeApp(config.staging),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    HttpModule,    
     IonicModule.forRoot(WhitelabelApp, {
         backButtonText: '',
         backButtonIcon: 'ios-arrow-back'
