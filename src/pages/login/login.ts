@@ -16,7 +16,10 @@ export class LoginPage {
     private authProvider: AuthProvider    
   ) {
   }
-  goTo(page: string){
+  login(){
     this.authProvider.emailLogin(this.email,this.password)
     }
+  goTo(page:string){
+    this.navCtrl.push(page)    
+  }
 }

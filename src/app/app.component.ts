@@ -25,10 +25,12 @@ export class WhitelabelApp {
     this.authProvider.auth().subscribe(auth=>{
       if(auth){
         console.log("login")
+        //this.app.getRootNav().setRoot('DashboardPage');
         this.rootPage='DashboardPage'
       }
       else{
         console.log("no login")
+        //this.app.getRootNav().setRoot('LoginPage');        
         this.rootPage='LoginPage'
       }
     })      
