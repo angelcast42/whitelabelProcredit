@@ -17,9 +17,8 @@ export class AccountAddPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccountAddPage');
+  goTo(page: string){
+    this.navCtrl.push(page)
   }
 
 }
