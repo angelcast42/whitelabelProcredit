@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx'
 
 import { schema } from '../../app/app.constants'
 import { User } from '../../models/user/user'
+import { ToastController} from 'ionic-angular'
 
 @Injectable()
 export class AuthProvider {
@@ -16,7 +17,9 @@ export class AuthProvider {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private toastCtrl: ToastController,        
+    
   ) {
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth
@@ -55,11 +58,16 @@ export class AuthProvider {
   }
 
   emailLogin(email: string, password: string) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+
+      return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
         this.authState = user
       })
-      .catch(error => console.log(error))
+      .catch(error =>{
+        this.presentToast('Usuario o contraseña incorrectos, por favor verifica.')
+      })
+    
+
   }
 
   // Sends email allowing user to reset password
@@ -90,5 +98,17 @@ export class AuthProvider {
   }
   auth(){
     return this.afAuth.authState;
+  }
+  presentToast(message:string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+    });
+  
+    toast.present();
   }
 }
