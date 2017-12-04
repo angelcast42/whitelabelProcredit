@@ -19,5 +19,10 @@ export const config = {
 
 export const schema = {
   Users: 'users',
-  Accounts: 'accounts'
+  Accounts: 'accounts',
+  ThirdAccounts: 'third-accounts',
+  Transfers: 'transfers',
+  Cashouts: 'cashouts',
+  Services: 'services',
+  Payments: 'payments'
 }

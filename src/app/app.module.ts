@@ -22,6 +22,11 @@ import { UserProvider } from '../providers/user/user'
 import { AccountProvider } from '../providers/account/account'
 
 import { HttpModule } from '@angular/http'
+import { ThirdaccountProvider } from '../providers/thirdaccount/thirdaccount';
+import { TransferProvider } from '../providers/transfer/transfer';
+import { CashoutProvider } from '../providers/cashout/cashout';
+import { PaymentProvider } from '../providers/payment/payment';
+import { ServiceProvider } from '../providers/service/service';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,12 @@ import { HttpModule } from '@angular/http'
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     UserProvider,
-    AccountProvider
+    AccountProvider,
+    ThirdaccountProvider,
+    TransferProvider,
+    CashoutProvider,
+    PaymentProvider,
+    ServiceProvider
   ]
 })
 export class AppModule {}
