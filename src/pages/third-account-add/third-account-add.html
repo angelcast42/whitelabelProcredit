@@ -1,0 +1,53 @@
+<ion-header>
+  
+    <ion-navbar>
+      <ion-title text-center>Agrega una cuenta ACH</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  <ion-content padding>
+    <div text-center class="box-title" padding>
+      <h5 class="register-title">Ingrese</h5>
+      <p class="register-subtitle" color="gray-neutral">datos de la cuenta</p>
+    </div>
+    <ion-list>
+      <ion-item class="register-icon-token">
+        <ion-label floating class="inv-font-regular">
+          <ion-icon name="accountname"></ion-icon> Nombre de referencia
+        </ion-label>
+        <ion-input class="register-input-pass" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Banco</ion-label>
+        <ion-select name="accountowner">
+          <ion-option value="1">Banco Procredit</ion-option>
+          <ion-option value="2">Banco Central de Nicaragua</ion-option>
+          <ion-option value="3">Banpro</ion-option>
+          <ion-option value="4">Bancentro</ion-option>
+          <ion-option value="5">Banco de América Central</ion-option>
+          <ion-option value="6">HSBC</ion-option>
+          <ion-option value="7">Ahorro</ion-option>
+        </ion-select>
+      </ion-item>      
+      <ion-item>
+        <ion-label>Tipo de cuenta</ion-label>
+        <ion-select name="accounttype">
+          <ion-option value="1">Monetaria</ion-option>
+          <ion-option value="2">Ahorro</ion-option>
+          <ion-option value="3">Tarjeta de crédito</ion-option>
+        </ion-select>
+      </ion-item>      
+      <ion-item class="register-icon-token">
+        <ion-label floating class="inv-font-regular">
+          <ion-icon name="accountnumber"></ion-icon> Número de cuenta
+        </ion-label>
+        <ion-input class="register-input-pass" type="number"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div text-center padding>
+      <button class="inv-btn" ion-button color="inv-brand-logo" (click)="goTo('ThirdAccountPinPage')" icon-end>
+        Verificar y guardar
+        <ion-icon name="ios-arrow-round-forward"></ion-icon>
+      </button>
+    </div>
+  </ion-content>

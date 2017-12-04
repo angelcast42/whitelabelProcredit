@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the RemittancePage page.
+ * Generated class for the ThirdAccountPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-remittance',
-  templateUrl: 'remittance.html',
+  selector: 'page-third-account',
+  templateUrl: 'third-account.html',
 })
-export class RemittancePage {
+export class ThirdAccountPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RemittancePage');
+  goTo(page: string){
+    this.navCtrl.push(page)
   }
-
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the AccountPage page.
+ * Generated class for the ThirdAccountAddPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,10 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-account',
-  templateUrl: 'account.html',
+  selector: 'page-third-account-add',
+  templateUrl: 'third-account-add.html',
 })
-export class AccountPage {
+export class ThirdAccountAddPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

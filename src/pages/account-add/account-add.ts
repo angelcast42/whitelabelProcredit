@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the AccountAddPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-account-add',
@@ -18,7 +11,7 @@ export class AccountAddPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   goTo(page: string){
-    this.navCtrl.push(page)
+    this.navCtrl.setRoot(page)
   }
 
 }

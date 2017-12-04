@@ -1,0 +1,37 @@
+<ion-header no-padding>
+  <ion-navbar text-center>
+    <ion-title class="inv-font-regular inv-color-gray-dark">Cuentas ACH</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="inv-container" isScrolling="false" no-padding>
+  <ion-list>
+    <ion-item (click)="goTo('ThirdAccountPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/thirdbank.png">
+      </ion-avatar>
+      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">Juan Perez</h2>
+      <p class="inv-font-bold inv-color-gray-dark margin-left">monetaria</p>
+    </ion-item>
+    <ion-item (click)="goTo('ThirdAccountPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/thirdbank.png">
+      </ion-avatar>
+      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left" >Lester Sanchez</h2>
+      <p class="inv-font-bold inv-color-gray-dark margin-left">ahorro</p>
+    </ion-item>
+    <ion-item (click)="goTo('ThirdAccountPage')">
+      <ion-avatar item-start>
+        <img src="assets/imgs/logo.png" class="logo-visa">
+      </ion-avatar>
+      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">Maria Jimenez</h2>
+      <p class="inv-font-bold inv-color-gray-dark margin-left">monetaria</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer class="container-keypad theme-transfer" no-padding>
+  <ion-fab bottom right>
+    <button ion-fab color="inv-brand-logo" (click)="goTo('ThirdAccountAddPage')">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-footer>

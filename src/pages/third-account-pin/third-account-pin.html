@@ -1,15 +1,15 @@
 <ion-header no-padding>
-    <ion-navbar text-center>
-      <ion-title class="inv-font-bold">
-        Remesas
-      </ion-title>+
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar text-center>
+      <ion-title class="inv-font-regular inv-color-gray-dark">
+      Cuentas ACH
+    </ion-title>
+  </ion-navbar>
+</ion-header>
   <ion-content class="inv-container" isScrolling="false" no-padding>
     <ion-grid class="inv-compose" no-margin no-padding>
       <ion-row class="inv-compose-row" wrap align-items-center>
         <ion-col text-center>
-          <h3 class="inv-compose-title inf-font-regular">Monto a recibir</h3>
+            <h3 class="inv-compose-title inv-font-regular">Ingresa PIN</h3>
         </ion-col>
       </ion-row>
     </ion-grid>  
@@ -19,7 +19,7 @@
     <ion-row wrap>
       <ion-col class="keypad-info">
         <h1 class="inv-keypad-input inv-font-regular" text-center>
-            {{amount}}
+            <ion-input no-margin no-padding type="password" text-center value="{{pin}}"></ion-input>
         </h1>
       </ion-col>        
     </ion-row>
@@ -58,7 +58,7 @@
     </ion-row>
     <ion-row wrap>
       <ion-col width-33>
-        <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('.')">.</button>
+        
       </ion-col>
       <ion-col width-33>
         <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('0')">0</button>
@@ -74,4 +74,3 @@
     Confirmar <ion-icon name="ios-arrow-round-forward"></ion-icon>
   </button>
   </ion-footer>
-  
