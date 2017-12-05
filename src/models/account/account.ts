@@ -2,7 +2,7 @@ export interface AccountModel {
   $key?: string;
   title: string;
   owner: string;
-  currency: string; 
+  currency: string;
   balance: number;
   token: string;
   type: string;

@@ -1,3 +1,11 @@
 page-third-account {
-
+  .inv{ 
+    &-avatar {
+      width: 150px;
+      height: 150px;
+    }
+    &-compose-name {
+      font-size: 2rem;
+    }
+  }
 }
