@@ -28,6 +28,8 @@ import { CashoutProvider } from '../providers/cashout/cashout';
 import { PaymentProvider } from '../providers/payment/payment';
 import { ServiceProvider } from '../providers/service/service';
 
+import { Firebase } from '@ionic-native/firebase'
+
 @NgModule({
   declarations: [
     WhitelabelApp
@@ -60,7 +62,9 @@ import { ServiceProvider } from '../providers/service/service';
     TransferProvider,
     CashoutProvider,
     PaymentProvider,
-    ServiceProvider
+    ServiceProvider    , 
+    Firebase
+    
   ]
 })
 export class AppModule {}
