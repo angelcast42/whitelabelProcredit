@@ -27,7 +27,7 @@ export class AccountAddPage {
     this.account.token=this.token
     this.accountProvider.create(this.account)
     this.authProvider.presentToast('La cuenta fue creada exitosamente.')
-    this.goTo('DashboardPage')
+    this.goTo('AccountsPage')
   }
   goTo(page: string){
     this.navCtrl.setRoot(page)
