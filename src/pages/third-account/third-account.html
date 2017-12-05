@@ -1,10 +1,40 @@
 <ion-header>
   <ion-navbar>
-    <ion-title text-center>thirdaccountname</ion-title>
+    <ion-title text-center>account.title</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-
+<ion-content no-padding>
+  <ion-grid no-margin no-padding>
+    <ion-row wrap align-items-center>
+      <ion-col text-center>
+        <img class="inv-avatar" src="assets/imgs/logo.png" alt="Cuenta de ahorro"/>            
+        <h3 class="inv-compose-name inv-font-regular">account.number | account.type</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+  <ion-list>
+    <ion-item-divider color="inv-brand-logo">
+        Historial de transferencias
+    </ion-item-divider>
+    <ion-item>
+      <h3>Tarjeta de crédito x3810</h3>
+      <p>Retiro #5519 <ion-badge class="small" color="inv-brand-orange">en proceso</ion-badge></p>
+      <p>Hace 8 días</p>
+      <ion-badge color="danger" item-end>Q 500.00</ion-badge>
+    </ion-item>
+    <ion-item>
+      <h3>Cuenta monetaria x2017</h3>
+      <p>Retiro #23017 <ion-badge class="small" color="inv-background">realizado</ion-badge></p>
+      <p>Hace 14 días</p>
+      <ion-badge color="inv-brand-green" item-end>Q 800.00</ion-badge>
+    </ion-item>
+    <ion-item>
+      <h3>Cuenta de ahorro x2036</h3>
+      <p>Retiro #19021 <ion-badge class="small" color="inv-background">expirado</ion-badge></p>
+      <p>Hace 26 días</p>
+      <ion-badge color="danger" item-end>Q 200.00</ion-badge>
+    </ion-item>    
+</ion-list>  
 </ion-content>
 <ion-footer class="container-keypad theme-transfer" no-padding>
   <ion-fab bottom right>

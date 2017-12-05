@@ -1,7 +1,7 @@
-export interface AccountModel {
+export interface ServiceModel {
   $key?: string;
   title: string;
-  owner: string;
+  logo: string;
   currency: string; 
   balance: number;
   token: string;
@@ -11,10 +11,10 @@ export interface AccountModel {
   modified?: string | Object;
   status: string;
 }
-export class Account implements AccountModel {
+export class Service implements ServiceModel {
   $key?: string;
   title: string;
-  owner: string;
+  logo: string;
   currency: string; 
   balance: number;
   token: string;
