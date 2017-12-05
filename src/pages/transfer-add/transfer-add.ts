@@ -9,22 +9,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class TransferAddPage {
   amount: number = 0;
   inputAmount: string = '0'
-  accountFrom
-  accountTo
+  transfer: any = {
+    accountFrom: null,
+    accountTo: null
+  }
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
     if (this.navParams.data.accountFrom) {
-      this.accountFrom = this.navParams.data.accountFrom
-      console.log('account from: ', this.accountFrom)
-    } else {
-      this.accountFrom = null
+      this.transfer.accountFrom = this.navParams.data.accountFrom
     }
     if (this.navParams.data.accountTo) {
-      this.accountTo = this.navParams.data.accountTo
-    } else {
-      this.accountTo = null
+      this.transfer.accountTo = this.navParams.data.accountTo
     }
   }
   append(item: string) {
@@ -72,8 +69,18 @@ export class TransferAddPage {
       this.amount = Number(this.inputAmount);
     }
   }
-  goTo(page: string){
-    this.navCtrl.push(page)
+  goTo(page: string, params: any = {}){
+    if (params === {}) {
+      this.navCtrl.push(page)
+    } else {
+      this.navCtrl.push(page, params)
+    }
   }
+  transferFrom(transfer) {
+    this.goTo('TransferFromPage', {transfer: transfer})
+  }
+  transferTo(transfer) {
+    this.goTo('TransferToPage', {transfer: transfer})
+  }  
 }
 

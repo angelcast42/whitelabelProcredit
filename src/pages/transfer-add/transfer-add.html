@@ -8,16 +8,25 @@
 <ion-content class="inv-container" isScrolling="false" no-padding>
     <ion-grid class="inv-compose" no-margin no-padding>
       <ion-row class="inv-compose-row" wrap align-items-center>
-        <ion-col col-5 text-center (click)="goTo('TransferFromPage')">
-          <img class="inv-avatar" src="assets/imgs/logo.png" alt="Cuenta de ahorro"/>            
-          <h3 class="inv-compose-name inv-font-regular">Ahorro</h3>
+        <ion-col *ngIf="transfer.accountFrom === null" col-5 text-center (click)="transferFrom(transfer)">
+          <img class="inv-avatar" src="assets/imgs/bank.png" alt="Elige una cuenta"/>            
+          <h3 class="inv-compose-name inv-font-regular">Elige una cuenta</h3>
+        </ion-col>
+        <ion-col *ngIf="transfer.accountFrom" col-5 text-center (click)="transferFrom(transfer)">
+          <img class="inv-avatar" src="assets/imgs/logo.png" alt="{{transfer.accountFrom.payload.val().type}}"/>            
+          <h3 class="inv-compose-name inv-font-regular">{{transfer.accountFrom.payload.val().title}}</h3>
         </ion-col>
         <ion-col col-2 text-center icon-only>
           <ion-icon name="ios-arrow-round-forward" color="inv-brand-logo"></ion-icon>
         </ion-col>
-        <ion-col col-5 text-center (click)="goTo('TransferToPage')">
-          <img class="inv-avatar" src="assets/imgs/thirdbank.png" alt="Juan Perez"/>
-          <h3 class="inv-compose-name inv-font-regular">Juan Pérez</h3>
+        <ion-col *ngIf="transfer.accountTo === null" col-5 text-center (click)="transferTo(transfer)">
+          <img class="inv-avatar" src="assets/imgs/bank.png" alt="Elige una cuenta"/>            
+          <h3 class="inv-compose-name inv-font-regular">Elige una cuenta</h3>
+        </ion-col>
+        <ion-col *ngIf="transfer.accountTo" col-5 text-center (click)="transferTo(transfer)">
+          <img *ngIf="!transfer.accountTo.payload.val().bank" class="inv-avatar" src="assets/imgs/logo.png" alt="{{transfer.accountTo.payload.val().type}}"/>            
+          <img *ngIf="transfer.accountTo.payload.val().bank" class="inv-avatar" src="assets/imgs/{{transfer.accountTo.payload.val().bank}}.png" alt="{{transfer.accountTo.payload.val().type}}"/>            
+          <h3 class="inv-compose-name inv-font-regular">{{transfer.accountTo.payload.val().title}}</h3>
         </ion-col>
       </ion-row>
     </ion-grid>  

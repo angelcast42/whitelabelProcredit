@@ -10,8 +10,7 @@
     <ion-item-divider color="inv-brand-logo">
       Mis cuentas
     </ion-item-divider>
-
-    <ion-item (click)="goTo('TransferAddPage', {accountFrom: account.key})" *ngFor="let account of accounts">
+    <ion-item (click)="transferAdd(account)" *ngFor="let account of accounts">
       <ion-avatar item-start>
         <img src="assets/imgs/logo.png">
       </ion-avatar>
