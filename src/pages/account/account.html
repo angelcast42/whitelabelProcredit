@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title text-center>account.title</ion-title>
+    <ion-title text-center>{{account.payload.val().title}}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content no-padding>
@@ -8,14 +8,14 @@
     <ion-row wrap align-items-center>
       <ion-col text-center>
         <img class="inv-avatar" src="assets/imgs/logo.png" alt="Cuenta de ahorro"/>            
-        <h3 class="inv-compose-name inv-font-regular">account.number | account.type</h3>
+        <h3 class="inv-compose-name inv-font-regular">xxxxxxxx{{account.payload.val().number}} | {{account.payload.val().type}}</h3>
       </ion-col>
     </ion-row>
   </ion-grid> 
   <ion-list>
     <ion-item-divider color="inv-brand-logo">
         Balance
-        <ion-badge color="inv-background" item-end>account.currency account.balance</ion-badge>
+        <ion-badge color="inv-background" item-end>{{account.payload.val().currency}} {{account.payload.val().balance}}</ion-badge>
     </ion-item-divider>
     <ion-item>
       <h3>Tarjeta de crédito x3810</h3>
@@ -39,7 +39,7 @@
 </ion-content>
 <ion-footer class="container-keypad theme-transfer" no-padding>
   <ion-fab bottom right>
-    <button ion-fab color="inv-brand-logo" (click)="goTo('TransferAddPage')">
+    <button ion-fab color="inv-brand-logo" (click)="goTo('TransferAddPage', {accountFrom: account.key})">
       <ion-icon name="md-add"></ion-icon>
     </button>
   </ion-fab>

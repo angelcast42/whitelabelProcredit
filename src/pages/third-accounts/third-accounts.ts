@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ThirdAccountsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ThirdaccountProvider } from '../../providers/thirdaccount/thirdaccount'
+import { AuthProvider } from '../../providers/auth/auth'
 
 @IonicPage()
 @Component({
@@ -14,10 +9,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'third-accounts.html',
 })
 export class ThirdAccountsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  thirdaccounts
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private authProvider: AuthProvider,    
+    private thirdaccountProvider: ThirdaccountProvider) {
+    this.thirdaccountProvider.getThirdaccounts(this.authProvider.currentUserId()).snapshotChanges().subscribe(thirdaccounts=>{
+      this.thirdaccounts=[];
+      thirdaccounts.forEach(eachThirdAccount => {
+        let account:any;
+        account = eachThirdAccount
+          this.thirdaccounts.push(account)
+      })      
+    })
   }
-  goTo(page: string){
-    this.navCtrl.push(page)
+  goTo(page: string, params: any = {}){
+    if (params === {}) {
+      this.navCtrl.push(page)
+    } else {
+      this.navCtrl.push(page, params)
+    }
   }
 }

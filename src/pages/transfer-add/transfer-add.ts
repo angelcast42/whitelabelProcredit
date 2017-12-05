@@ -9,10 +9,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class TransferAddPage {
   amount: number = 0;
   inputAmount: string = '0'
+  accountFrom
+  accountTo
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
+    if (this.navParams.data.accountFrom) {
+      this.accountFrom = this.navParams.data.accountFrom
+      console.log('account from: ', this.accountFrom)
+    } else {
+      this.accountFrom = null
+    }
+    if (this.navParams.data.accountTo) {
+      this.accountTo = this.navParams.data.accountTo
+    } else {
+      this.accountTo = null
+    }
   }
   append(item: string) {
     if (item == 'backspace') {

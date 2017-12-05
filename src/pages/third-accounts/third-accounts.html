@@ -5,27 +5,14 @@
 </ion-header>
 <ion-content class="inv-container" isScrolling="false" no-padding>
   <ion-list>
-    <ion-item (click)="goTo('ThirdAccountPage')">
+    <ion-item (click)="goTo('ThirdAccountPage', {thirdaccount: thirdaccount})" *ngFor="let thirdaccount of thirdaccounts">
       <ion-avatar item-start>
-        <img src="assets/imgs/thirdbank.png">
+        <img src="assets/imgs/logo.png">
       </ion-avatar>
-      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">Juan Perez</h2>
-      <p class="inv-font-bold inv-color-gray-dark margin-left">monetaria</p>
-    </ion-item>
-    <ion-item (click)="goTo('ThirdAccountPage')">
-      <ion-avatar item-start>
-        <img src="assets/imgs/thirdbank.png">
-      </ion-avatar>
-      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left" >Lester Sanchez</h2>
-      <p class="inv-font-bold inv-color-gray-dark margin-left">ahorro</p>
-    </ion-item>
-    <ion-item (click)="goTo('ThirdAccountPage')">
-      <ion-avatar item-start>
-        <img src="assets/imgs/logo.png" class="logo-visa">
-      </ion-avatar>
-      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">Maria Jimenez</h2>
-      <p class="inv-font-bold inv-color-gray-dark margin-left">monetaria</p>
-    </ion-item>
+      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">{{thirdaccount.payload.val().title}}</h2>
+      <p class="inv-font-bold inv-color-gray-dark margin-left">{{thirdaccount.payload.val().type}}-xxxxxxx{{thirdaccount.payload.val().number}}</p>
+      <ion-badge color="inv-brand-logo" item-end>{{thirdaccount.payload.val().currency}} {{thirdaccount.payload.val().balance}}</ion-badge>
+    </ion-item>    
   </ion-list>
 </ion-content>
 <ion-footer class="container-keypad theme-transfer" no-padding>

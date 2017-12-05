@@ -28,13 +28,13 @@ export class AccountProvider {
     })
   }
   // Return an observable account
-  get(key: string): Observable<Account> {
+  getAccount(key: string): Observable<Account> {
     const itemPath = schema.Accounts+'/'+key
     //this.item = this.db.object(itemPath).valueChanges()
     return this.item
   }
 
-  getAccount(owner: string) {
+  getAccounts(owner: string) {
     return this.db.list(schema.Accounts, ref => ref.orderByChild('owner').equalTo(owner))
   }
   // Create new account

@@ -1,12 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AccountPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Component } from '@angular/core'
+import { IonicPage, NavController, NavParams } from 'ionic-angular'
 
 @IonicPage()
 @Component({
@@ -14,10 +7,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'account.html',
 })
 export class AccountPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  account
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams
+  ) {
+    this.account = this.navParams.data.account
+    console.log("cuenta",this.account)
   }
-  goTo(page: string){
-    this.navCtrl.push(page)
+  goTo(page: string, params: any = {}){
+    if (params === {}) {
+      this.navCtrl.push(page)
+    } else {
+      this.navCtrl.push(page, params)
+    }
   }
 }

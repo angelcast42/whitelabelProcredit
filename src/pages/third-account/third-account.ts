@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the ThirdAccountPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-third-account',
   templateUrl: 'third-account.html',
 })
 export class ThirdAccountPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  thirdaccount
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams
+  ) {
+    this.thirdaccount = this.navParams.data.thirdaccount
+    console.log("cuenta ACH: ",this.thirdaccount)    
   }
-  goTo(page: string){
-    this.navCtrl.push(page)
+  goTo(page: string, params: any = {}){
+    if (params === {}) {
+      this.navCtrl.push(page)
+    } else {
+      this.navCtrl.push(page, params)
+    }
   }
 }

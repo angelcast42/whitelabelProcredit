@@ -5,6 +5,9 @@ export interface ThirdaccountModel {
   currency: string; 
   bank: string;
   type: string;
+  number: string;
+  iban: string;
+  swift: string;
 
   created?: string | Object;
   modified?: string | Object;
@@ -17,6 +20,9 @@ export class Thirdaccount implements ThirdaccountModel {
   currency: string; 
   bank: string;
   type: string;
+  number: string;
+  iban: string;
+  swift: string;
 
   created?: string | Object;
   modified?: string | Object;

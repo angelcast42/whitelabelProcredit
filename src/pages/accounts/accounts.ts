@@ -13,14 +13,20 @@ accounts
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private authProvider: AuthProvider,    
     private accountProvider: AccountProvider) {
-    this.accountProvider.getAccount(this.authProvider.currentUserId()).valueChanges().subscribe(accounts=>{
-      this.accounts=accounts;
-      console.log("cuentas",this.accounts)
+    this.accountProvider.getAccounts(this.authProvider.currentUserId()).snapshotChanges().subscribe(accounts=>{
+      this.accounts=[];
+      accounts.forEach(eachAccount => {
+        let account:any;
+        account = eachAccount
+          this.accounts.push(account)
+      })      
     })
   }
-
-  goTo(page: string){
-    this.navCtrl.push(page)
+  goTo(page: string, params: any = {}){
+    if (params === {}) {
+      this.navCtrl.push(page)
+    } else {
+      this.navCtrl.push(page, params)
+    }
   }
-
 }
