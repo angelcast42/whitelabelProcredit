@@ -15,24 +15,23 @@
         <ion-label floating class="inv-font-regular">
           <ion-icon name="accountname"></ion-icon> Nombre de referencia
         </ion-label>
-        <ion-input class="register-input-pass" type="text"></ion-input>
+        <ion-input [(ngModel)]="name" class="register-input-pass" type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Banco</ion-label>
-        <ion-select name="accountowner">
+        <ion-select [(ngModel)]="bank" name="bank">
           <ion-option value="PROCREDIT">Banco Procredit</ion-option>
           <ion-option value="BCN">Banco Central de Nicaragua</ion-option>
           <ion-option value="BANPRO">Banco de la Producción S. A.</ion-option>
           <ion-option value="LAFISE">Banco LAFISE Bancentro S. A.</ion-option>
           <ion-option value="BAC">Banco de América Central S. A.</ion-option>
-          <ion-option value="hsbc">HSBC</ion-option>
           <ion-option value="BDF">Banco de finanzas S. A.</ion-option>
           <ion-option value="BPDC">Banco popular y de desarrollo comunal</ion-option>
         </ion-select> 
       </ion-item>      
       <ion-item>
         <ion-label>Tipo de cuenta</ion-label>
-        <ion-select name="accounttype">
+        <ion-select [(ngModel)]="type" name="type">
           <ion-option value="monetaria">Monetaria</ion-option>
           <ion-option value="ahorro">Ahorro</ion-option>
           <ion-option value="tarjeta">Tarjeta de crédito o débito</ion-option>
@@ -40,13 +39,13 @@
       </ion-item>      
       <ion-item class="register-icon-token">
         <ion-label floating class="inv-font-regular">
-          <ion-icon name="accountnumber"></ion-icon> Número de cuenta
+          <ion-icon></ion-icon> Número de cuenta
         </ion-label>
-        <ion-input class="register-input-pass" type="number"></ion-input>
+        <ion-input [(ngModel)]="number" name="number" class="register-input-pass" type="number"></ion-input>
       </ion-item>
     </ion-list>
     <div text-center padding>
-      <button class="inv-btn" ion-button color="inv-brand-logo" (click)="goTo('ThirdAccountPinPage')" icon-end>
+      <button class="inv-btn" ion-button color="inv-brand-logo" (click)="verify()" icon-end>
         Verificar y guardar
         <ion-icon name="ios-arrow-round-forward"></ion-icon>
       </button>

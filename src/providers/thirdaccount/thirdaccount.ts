@@ -39,12 +39,7 @@ export class ThirdaccountProvider {
   create(item: Thirdaccount): void {
     item.created=firebase.database.ServerValue.TIMESTAMP
     item.modified=firebase.database.ServerValue.TIMESTAMP
-    let n1=Math.floor(Math.random() * 9) + 1 ; 
-    let n2=Math.floor(Math.random() * 9) + 1 ; 
-    let n3=Math.floor(Math.random() * 9) + 1 ; 
-    let n4=Math.floor(Math.random() * 9) + 1 ; 
-    let code=n1.toString()+n2.toString()+n3.toString()+n4.toString();
-    item.number=code;
+    console.log('thirdaccount: ', item)
     this.itemsRef.push(item)
   }
   // Update an third account

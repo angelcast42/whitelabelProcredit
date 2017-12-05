@@ -10,10 +10,10 @@ import { Thirdaccount } from '../../models/thirdaccount/thirdaccount'
   templateUrl: 'third-account-add.html',
 })
 export class ThirdAccountAddPage {
-  name
-  bank
-  type
-  number
+  name: string
+  bank: string
+  type: string
+  number: string
   thirdaccount:Thirdaccount
   constructor(
     public navCtrl: NavController, 
@@ -23,7 +23,7 @@ export class ThirdAccountAddPage {
   ) {
     this.thirdaccount=this.thirdAccountProvider.newThirdAccount()
   }
-  create(){
+  verify(){
     this.thirdaccount.title = this.name
     this.thirdaccount.owner = this.authProvider.currentUserId()
     this.thirdaccount.currency = 'C$'
@@ -31,12 +31,14 @@ export class ThirdAccountAddPage {
     this.thirdaccount.type = this.type
     this.thirdaccount.number = this.number
     this.thirdaccount.status='active'
-    this.thirdAccountProvider.create(this.thirdaccount)
-    this.authProvider.presentToast('La cuenta fue creada exitosamente.')
-    this.goTo('DashboardPage')
+    this.goTo('ThirdAccountPinPage', {thirdaccount: this.thirdaccount})
   }
-  goTo(page: string){
-    this.navCtrl.setRoot(page)
+  goTo(page: string, params: any = {}){
+    if (params === {}) {
+      this.navCtrl.push(page)
+    } else {
+      this.navCtrl.push(page, params)
+    }
   }
-
 }
+

@@ -7,11 +7,10 @@
   <ion-list>
     <ion-item (click)="goTo('ThirdAccountPage', {thirdaccount: thirdaccount})" *ngFor="let thirdaccount of thirdaccounts">
       <ion-avatar item-start>
-        <img src="assets/imgs/logo.png">
+        <img src="assets/imgs/{{thirdaccount.payload.val().bank}}.png">
       </ion-avatar>
       <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">{{thirdaccount.payload.val().title}}</h2>
-      <p class="inv-font-bold inv-color-gray-dark margin-left">{{thirdaccount.payload.val().type}}-xxxxxxx{{thirdaccount.payload.val().number}}</p>
-      <ion-badge color="inv-brand-logo" item-end>{{thirdaccount.payload.val().currency}} {{thirdaccount.payload.val().balance}}</ion-badge>
+      <p class="inv-font-bold inv-color-gray-dark margin-left">{{thirdaccount.payload.val().type}}-{{thirdaccount.payload.val().number}}</p>
     </ion-item>    
   </ion-list>
 </ion-content>
