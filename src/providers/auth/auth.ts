@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx'
 
 import { schema } from '../../app/app.constants'
 import { User } from '../../models/user/user'
+import { ToastController} from 'ionic-angular'
 
 @Injectable()
 export class AuthProvider {
@@ -16,7 +17,8 @@ export class AuthProvider {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private toastCtrl: ToastController    
   ) {
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth
@@ -39,8 +41,8 @@ export class AuthProvider {
   }
 
   // Returns current user UID
-  get currentUserId(): string {
-    return this.authenticated ? this.authState.uid : ''
+  currentUserId() {
+    return firebase.auth().currentUser.uid;
   }
 
   // Email Auth
@@ -86,9 +88,21 @@ export class AuthProvider {
       phone: detail.phone,
       token:detail.token
     }
-    firebase.database().ref('users/').push(data)
+    firebase.database().ref('users/').child(this.authState.uid).update(data)
   }
   auth(){
     return this.afAuth.authState;
+  }
+  presentToast(message:string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+    });
+  
+    toast.present();
   }
 }

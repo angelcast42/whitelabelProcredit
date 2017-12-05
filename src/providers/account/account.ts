@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core'
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database'
 import { Observable } from 'rxjs/Observable'
+import * as firebase from 'firebase/app'
 
 import { schema } from '../../app/app.constants'
 import { Account } from '../../models/account/account'
+import { Firebase } from '@ionic-native/firebase'
+import { AccountModel } from '../../models/account/account'
 
 @Injectable()
 export class AccountProvider {
@@ -13,8 +16,8 @@ export class AccountProvider {
 
   items: Observable<Account[]> //  list of objects
   item:  Observable<Account>   //   single object
-
-  constructor(private db: AngularFireDatabase) {
+  account: AccountModel
+  constructor(private db: AngularFireDatabase,    private firebaseNative: Firebase  ) {
     this.itemsRef = db.list(`${schema.Accounts}`)
   }
   // Return an observable list with optional query
@@ -30,8 +33,24 @@ export class AccountProvider {
     //this.item = this.db.object(itemPath).valueChanges()
     return this.item
   }
+
+  getAccount(owner: string) {
+    return this.db.list(schema.Accounts, ref => ref.orderByChild('owner').equalTo(owner))
+  }
   // Create new account
   create(item: Account): void {
+    this.firebaseNative.getToken()
+    .then(token=>{
+      item.token=token
+    });
+    item.created=firebase.database.ServerValue.TIMESTAMP
+    item.modified=firebase.database.ServerValue.TIMESTAMP
+    let n1=Math.floor(Math.random() * 9) + 1 ; 
+    let n2=Math.floor(Math.random() * 9) + 1 ; 
+    let n3=Math.floor(Math.random() * 9) + 1 ; 
+    let n4=Math.floor(Math.random() * 9) + 1 ; 
+    let code=n1.toString()+n2.toString()+n3.toString()+n4.toString();
+    item.number=code;
     this.itemsRef.push(item)
   }
   // Update an account
@@ -46,4 +65,23 @@ export class AccountProvider {
   private handleError(error) {
     console.log(error)
   }
+  newAccount(){
+    this.reset()
+    return this.account
+  }
+  reset(){
+    this.account={
+      balance:0,
+      currency: 'C$',
+      owner: '',
+      status: 'active',
+      title:'',
+      token:'',
+      tokencf:'',
+      created: '',
+      modified: '',
+      type: 'monetaria',
+      number: ''
+    }
+      }
 }
