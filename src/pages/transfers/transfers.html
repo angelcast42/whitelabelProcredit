@@ -7,30 +7,12 @@
   </ion-header>
   <ion-content class="transfers">
     <ion-list>
-      <ion-item>
-        <h3>Cuenta monetaria x2017</h3>
-        <p>Confirmación #155515 <ion-badge class="small" color="inv-background">pendiente</ion-badge></p>
-        <p>Hace 3 días</p>
-        <ion-badge color="danger" item-end>Q 1000.00</ion-badge>
-      </ion-item>
-      <ion-item>
-        <h3>Tarjeta de crédito x3810</h3>
-        <p>Confirmación #5519 <ion-badge class="small" color="inv-background">realizado</ion-badge></p>
-        <p>Hace 8 días</p>
-        <ion-badge color="danger" item-end>Q 500.00</ion-badge>
-      </ion-item>
-      <ion-item>
-        <h3>Cuenta monetaria x2017</h3>
-        <p>Confirmación #23017 <ion-badge class="small" color="inv-background">realizado</ion-badge></p>
-        <p>Hace 14 días</p>
-        <ion-badge color="danger" item-end>Q 800.00</ion-badge>
-      </ion-item>
-      <ion-item>
-        <h3>Juan Perez</h3>
-        <p>Confirmación #19021 <ion-badge class="small" color="inv-background">ACH</ion-badge></p>
-        <p>Hace 26 días</p>
-        <ion-badge color="danger" item-end>Q 200.00</ion-badge>
-      </ion-item>
+      <ion-item (click)="goTo('TransferPage', {transfer: transfer})" *ngFor="let transfer of transfers">
+        <h3>{{transfer.payload.val().sendTo}}</h3>
+        <p>{{transfer.payload.val().auth}} <ion-badge class="small" color="inv-background">{{transfer.payload.val().status}}</ion-badge></p>
+        <p>{{transfer.payload.val().created | date}}</p>
+        <ion-badge color="danger" item-end>{{transfer.payload.val().currency}} {{transfer.payload.val().amount}}</ion-badge>
+      </ion-item>      
     </ion-list>
   </ion-content>
   <ion-footer class="container-keypad theme-transfer" no-padding>

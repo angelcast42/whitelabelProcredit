@@ -18,6 +18,9 @@ export class TransferProvider {
     this.itemsRef = db.list(`${schema.Transfers}`)
     
   }
+  getTransfers(uid) {
+    return this.db.list(schema.Transfers, ref => ref.orderByChild('sendBy').equalTo(uid))
+  }  
   newTransfer(){
     this.reset()
     return this.transfer
