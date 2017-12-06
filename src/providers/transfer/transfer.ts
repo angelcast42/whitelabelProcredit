@@ -28,13 +28,29 @@ export class TransferProvider {
     this.reset()
     return this.transfer
   }
-  create(item,transaction){
+  create(item,transaction,receiver){
     item.created=firebase.database.ServerValue.TIMESTAMP
     item.modified=firebase.database.ServerValue.TIMESTAMP
+    let n1=Math.floor(Math.random() * 9) + 1 ; 
+    let n2=Math.floor(Math.random() * 9) + 1 ; 
+    let n3=Math.floor(Math.random() * 9) + 1 ; 
+    let n4=Math.floor(Math.random() * 9) + 1 ;
+    let n5=Math.floor(Math.random() * 9) + 1 ; 
+    let n6=Math.floor(Math.random() * 9) + 1 ; 
+    let n7=Math.floor(Math.random() * 9) + 1 ; 
+    let n8=Math.floor(Math.random() * 9) + 1 ; 
+    let auth=n1.toString()+n2.toString()+n3.toString()+n4.toString()+n5.toString()+n6.toString()+n7.toString()+n8.toString()
+    item.auth=auth
     firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).once('value',snapshot=>{
       firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).child('balance').set(snapshot.val().balance-item.amount)
     })
+    if(receiver){
+      firebase.database().ref(schema.Accounts+'/'+receiver.key).once('value',snapshot=>{
+        firebase.database().ref(schema.Accounts+'/'+receiver.key).child('balance').set(snapshot.val().balance+item.amount)
+      })      
+    }
     this.itemsRef.push(item)
+    return item
   }
   reset(){
     this.transfer={
@@ -46,6 +62,7 @@ export class TransferProvider {
       currency: 'C$',
       created: '',
       modified: '',
+      auth: 0,
       status: 'accepted'
     }
   }

@@ -25,6 +25,7 @@ export class TransferPinPage {
     public transferProvider: TransferProvider,                  
     private authProvider: AuthProvider       
   ) {
+    this.authProvider.presentToast('Te hemos enviado un sms con el PIN, por favor espera.')
     this.transaction=navParams.data.transfer
     this.transfer=this.transferProvider.newTransfer()
     this.code=this.navParams.data.code
@@ -75,10 +76,12 @@ export class TransferPinPage {
     }
   }
   goTo(page: string){
+    let receiver
     if(this.inputAmount===this.code){
       this.accountProvider.getAccount(this.transaction.accountTo.payload.val().number).snapshotChanges().subscribe(accounts=>{
         if(accounts.length>0){
           this.userProvider.getUser().then(user=>{
+            receiver=accounts[0]
             if(accounts[0].payload.val().owner!=this.authProvider.currentUserId()){
               this.userProvider.sendPush(accounts[0].payload.val().tokencf,'Transferencias','El usuario '+user.name+' te ha realizado una transferencia de '+this.transaction.amount+'.')
             }
@@ -87,8 +90,8 @@ export class TransferPinPage {
         this.transfer.amount= this.transaction.amount
         this.transfer.sendBy=this.authProvider.currentUserId()
         this.transfer.sendFrom=this.transaction.accountFrom.payload.val().number
-        this.transferProvider.create(this.transfer,this.transaction)
-        this.navCtrl.setRoot(page)
+        this.transfer=this.transferProvider.create(this.transfer,this.transaction,receiver)
+        this.navCtrl.setRoot(page,{transfer:this.transfer,transaction:this.transaction})
       })
     }
     else{

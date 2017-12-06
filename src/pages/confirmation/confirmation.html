@@ -11,10 +11,10 @@
 </div>
 <div text-center padding>
     <h3 class="inv-font-bold">Autorización</h3>
-    <h3 class="inv-font-padbot">No. 2054655</h3>
+    <h3 class="inv-font-padbot">No. {{transfer.auth}}</h3>
 
-    <h5>Desde la cuenta: Ahorro</h5>
-    <h5>xxxxxx2017</h5>
+    <h5>Desde la cuenta: {{transaction.accountFrom.payload.val().title}}</h5>
+    <h5>{{transaction.accountFrom.payload.val().number}}</h5>
   </div>
 </ion-content>
 

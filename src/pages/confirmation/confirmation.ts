@@ -14,8 +14,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'confirmation.html',
 })
 export class ConfirmationPage {
-
+transfer
+transaction
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.transaction=navParams.data.transaction
+    this.transfer=navParams.data.transfer
   }
 
   ionViewDidLoad() {
