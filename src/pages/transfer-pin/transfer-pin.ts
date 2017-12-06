@@ -27,6 +27,7 @@ export class TransferPinPage {
   ) {
     this.transaction=navParams.data.transfer
     this.transfer=this.transferProvider.newTransfer()
+    this.code=this.navParams.data.code
   }
   append(item: string) {
     if (item == 'backspace') {
@@ -89,6 +90,10 @@ export class TransferPinPage {
         this.transferProvider.create(this.transfer,this.transaction)
         this.navCtrl.setRoot(page)
       })
+    }
+    else{
+      this.authProvider.presentToast('Pin incorrecto, por favor verifica.')
+      console.log("codigo incorrecto")
     }
   }
 

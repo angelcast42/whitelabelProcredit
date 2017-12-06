@@ -15,7 +15,7 @@ export class TransferProvider {
     private db: AngularFireDatabase
   ) {
     console.log('Hello TransferProvider Provider');
-    this.itemsRef = db.list(`${schema.Accounts}`)
+    this.itemsRef = db.list(`${schema.Transfers}`)
     
   }
   newTransfer(){
@@ -25,7 +25,7 @@ export class TransferProvider {
   create(item,transaction){
     item.created=firebase.database.ServerValue.TIMESTAMP
     item.modified=firebase.database.ServerValue.TIMESTAMP
-    firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).on('value',snapshot=>{
+    firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).once('value',snapshot=>{
       firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).child('balance').set(snapshot.val().balance-item.amount)
     })
     this.itemsRef.push(item)
