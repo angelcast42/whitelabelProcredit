@@ -77,16 +77,25 @@ export class TransferPinPage {
   }
   goTo(page: string){
     let receiver
+    console.log("1")
     if(this.inputAmount===this.code){
+      console.log("2")
+      
       this.accountProvider.getAccount(this.transaction.accountTo.payload.val().number).snapshotChanges().subscribe(accounts=>{
+        console.log("3")
+        
         if(accounts.length>0){
           this.userProvider.getUser().then(user=>{
+            console.log("4")
+            
             receiver=accounts[0]
             if(accounts[0].payload.val().owner!=this.authProvider.currentUserId()){
               this.userProvider.sendPush(accounts[0].payload.val().tokencf,'Transferencias','El usuario '+user.name+' te ha realizado una transferencia de '+this.transaction.amount+'.')
             }
           })
         }
+        console.log("5")
+        
         this.transfer.amount= this.transaction.amount
         this.transfer.sendBy=this.authProvider.currentUserId()
         this.transfer.sendFrom=this.transaction.accountFrom.payload.val().number
