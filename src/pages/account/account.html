@@ -4,36 +4,39 @@
   </ion-navbar>
 </ion-header>
 <ion-content no-padding>
-  <ion-grid no-margin no-padding>
+  <ion-grid no-margin no-padding class="background">
     <ion-row wrap align-items-center>
-      <ion-col text-center>
+      <ion-col text-center col-5>
         <img class="inv-avatar" src="assets/imgs/logo.png" alt="Cuenta de ahorro"/>            
-        <h3 class="inv-compose-name inv-font-regular">xxxxxxxx{{account.payload.val().number}} | {{account.payload.val().type}}</h3>
+      </ion-col>
+      <ion-col col-7>
+        <h3 class="inv-compose-name inv-font-regular">{{account.payload.val().number}}</h3>
+        <p>{{account.payload.val().type}}</p>       
       </ion-col>
     </ion-row>
   </ion-grid> 
   <ion-list>
-    <ion-item-divider color="inv-brand-logo">
+    <ion-item-divider color="light" class="inv-brand-logo">
         Balance
-        <ion-badge color="inv-background" item-end>{{account.payload.val().currency}} {{account.payload.val().balance}}</ion-badge>
+        <ion-badge color="inv-brand-logo" item-end>{{account.payload.val().currency}} {{account.payload.val().balance}}</ion-badge>
     </ion-item-divider>
     <ion-item>
       <h3>Tarjeta de crédito x3810</h3>
       <p>Retiro #5519 <ion-badge class="small" color="inv-brand-orange">en proceso</ion-badge></p>
       <p>Hace 8 días</p>
-      <ion-badge color="danger" item-end>Q 500.00</ion-badge>
+      <ion-badge color="inv-brand-logo" item-end>Q 500.00</ion-badge>
     </ion-item>
     <ion-item>
       <h3>Cuenta monetaria x2017</h3>
-      <p>Retiro #23017 <ion-badge class="small" color="inv-background">realizado</ion-badge></p>
+      <p>Retiro #23017 <ion-badge class="small" color="inv-brand-green">realizado</ion-badge></p>
       <p>Hace 14 días</p>
-      <ion-badge color="inv-brand-green" item-end>Q 800.00</ion-badge>
+      <ion-badge color="inv-brand-logo" item-end>Q 800.00</ion-badge>
     </ion-item>
     <ion-item>
       <h3>Cuenta de ahorro x2036</h3>
-      <p>Retiro #19021 <ion-badge class="small" color="inv-background">expirado</ion-badge></p>
+      <p>Retiro #19021 <ion-badge class="small" color="danger">expirado</ion-badge></p>
       <p>Hace 26 días</p>
-      <ion-badge color="danger" item-end>Q 200.00</ion-badge>
+      <ion-badge color="inv-brand-logo" item-end>Q 200.00</ion-badge>
     </ion-item>    
 </ion-list>  
 </ion-content>

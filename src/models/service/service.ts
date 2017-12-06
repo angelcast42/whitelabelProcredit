@@ -3,7 +3,6 @@ export interface ServiceModel {
   title: string;
   logo: string;
   currency: string; 
-  balance: number;
   token: string;
   type: string;
 
@@ -16,7 +15,6 @@ export class Service implements ServiceModel {
   title: string;
   logo: string;
   currency: string; 
-  balance: number;
   token: string;
   type: string;
 
