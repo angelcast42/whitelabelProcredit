@@ -87,8 +87,7 @@ export class TransferPinPage {
         this.transfer.sendBy=this.authProvider.currentUserId()
         this.transfer.sendFrom=this.transaction.accountFrom.payload.val().number
         this.transferProvider.create(this.transfer,this.transaction)
-        this.navCtrl.setRoot(page)      
-        
+        this.navCtrl.setRoot(page)
       })
     }
   }

@@ -1,23 +1,19 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { TransferModel } from '../../models/transfer/transfer'
+import { Injectable } from '@angular/core'
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database'
-import * as firebase from 'firebase/app'
 import { Observable } from 'rxjs/Observable'
+import * as firebase from 'firebase/app'
+
 import { schema } from '../../app/app.constants'
+import { Transfer } from '../../models/transfer/transfer'
 
-/*
-  Generated class for the TransferProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class TransferProvider {
-  transfer:TransferModel
+  transfer:Transfer
   itemsRef: AngularFireList<Account>
   
-  constructor(private db: AngularFireDatabase,public http: HttpClient) {
+  constructor(
+    private db: AngularFireDatabase
+  ) {
     console.log('Hello TransferProvider Provider');
     this.itemsRef = db.list(`${schema.Accounts}`)
     
@@ -29,8 +25,8 @@ export class TransferProvider {
   create(item,transaction){
     item.created=firebase.database.ServerValue.TIMESTAMP
     item.modified=firebase.database.ServerValue.TIMESTAMP
-    firebase.database().ref('accounts/'+transaction.accountFrom.key).on('value',snapshot=>{
-      firebase.database().ref('accounts/'+transaction.accountFrom.key).child('balance').set(snapshot.val().balance-item.amount)
+    firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).on('value',snapshot=>{
+      firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).child('balance').set(snapshot.val().balance-item.amount)
     })
     this.itemsRef.push(item)
   }
