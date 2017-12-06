@@ -92,7 +92,7 @@ export class UserProvider {
       message: message
     };
 
-    this.http.post('https://us-central1-fristaging.cloudfunctions.net/sendPush',JSON.stringify(item),{headers:headers})
+    this.http.post('https://us-central1-fri-whitelabel.cloudfunctions.net/sendPush',JSON.stringify(item),{headers:headers})
     .map(res=>res)
     .subscribe(data=>{
       console.log(data);
