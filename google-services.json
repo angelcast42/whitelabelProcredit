@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "573051393900",
+    "firebase_url": "https://fri-whitelabel.firebaseio.com",
+    "project_id": "fri-whitelabel",
+    "storage_bucket": "fri-whitelabel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573051393900:android:ed71e3b2864bb80f",
+        "android_client_info": {
+          "package_name": "com.whitelabel.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573051393900-70odg2fcckf0j4rvji9ihqujlq9pkn52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEKfV8v30btmyOEVWbUChsV6ofwJYblko"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

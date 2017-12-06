@@ -40,24 +40,25 @@ export class AccountProvider {
   create(item: Account): void {
     this.firebaseNative.getToken()
     .then(token=>{
-      console.log("cf",token)
+      console.log("tokencf",token)
       item.tokencf=token
+      item.created=firebase.database.ServerValue.TIMESTAMP
+      item.modified=firebase.database.ServerValue.TIMESTAMP
+      let n1=Math.floor(Math.random() * 9) + 1 ; 
+      let n2=Math.floor(Math.random() * 9) + 1 ; 
+      let n3=Math.floor(Math.random() * 9) + 1 ; 
+      let n4=Math.floor(Math.random() * 9) + 1 ;
+      let n5=Math.floor(Math.random() * 9) + 1 ; 
+      let n6=Math.floor(Math.random() * 9) + 1 ; 
+      let n7=Math.floor(Math.random() * 9) + 1 ; 
+      let n8=Math.floor(Math.random() * 9) + 1 ;  
+      let n9=Math.floor(Math.random() * 9) + 1 ;  
+      let n10=Math.floor(Math.random() * 9) + 1 ;      
+      let code=n1.toString()+n2.toString()+n3.toString()+n4.toString()+n5.toString()+n6.toString()+n7.toString()+n8.toString()+n9.toString()+n10.toString()
+      item.number=code;
+      this.itemsRef.push(item)
     });
-    item.created=firebase.database.ServerValue.TIMESTAMP
-    item.modified=firebase.database.ServerValue.TIMESTAMP
-    let n1=Math.floor(Math.random() * 9) + 1 ; 
-    let n2=Math.floor(Math.random() * 9) + 1 ; 
-    let n3=Math.floor(Math.random() * 9) + 1 ; 
-    let n4=Math.floor(Math.random() * 9) + 1 ;
-    let n5=Math.floor(Math.random() * 9) + 1 ; 
-    let n6=Math.floor(Math.random() * 9) + 1 ; 
-    let n7=Math.floor(Math.random() * 9) + 1 ; 
-    let n8=Math.floor(Math.random() * 9) + 1 ;  
-    let n9=Math.floor(Math.random() * 9) + 1 ;  
-    let n10=Math.floor(Math.random() * 9) + 1 ;      
-    let code=n1.toString()+n2.toString()+n3.toString()+n4.toString()+n5.toString()+n6.toString()+n7.toString()+n8.toString()+n9.toString()+n10.toString()
-    item.number=code;
-    this.itemsRef.push(item)
+
   }
   // Update an account
   update(key: string, value: any): void {
