@@ -8,10 +8,10 @@
   <ion-content class="transfers">
     <ion-list>
       <ion-item (click)="goTo('TransferPage', {transfer: transfer})" *ngFor="let transfer of transfers">
-        <h3>{{transfer.payload.val().sendTo}}</h3>
-        <p>{{transfer.payload.val().auth}} <ion-badge class="small" color="inv-background">{{transfer.payload.val().status}}</ion-badge></p>
+        <h3>A{{transfer.payload.val().sendTo}}</h3>
+        <p>{{transfer.payload.val().auth}}q <ion-badge class="small" color="inv-brand-green">{{transfer.payload.val().status}}</ion-badge></p>
         <p>{{transfer.payload.val().created | date}}</p>
-        <ion-badge color="danger" item-end>{{transfer.payload.val().currency}} {{transfer.payload.val().amount}}</ion-badge>
+        <ion-badge color="inv-brand-logo" item-end>{{transfer.payload.val().currency}} {{transfer.payload.val().amount}}</ion-badge>
       </ion-item>      
     </ion-list>
   </ion-content>

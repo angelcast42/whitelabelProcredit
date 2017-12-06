@@ -1,5 +1,5 @@
 page-transfers {
-  .transfers {
+  /*.transfers {
     p, .small {
       font-size: 0.8rem;
       color: color($colors, 'inv-text-light');
@@ -7,5 +7,29 @@ page-transfers {
     .small {
       margin-left: 6px;
     }
+  }*/
+  .small{
+    position: absolute;
+    right: 16px;
+    margin-top: 20px;
+    background: none;
   }
+  .background {
+    background: color($colors, 'inv-background');
+  }
+  .badge-md-inv-brand-orange {
+    color: color($colors, 'inv-brand-orange');
+  }
+  .badge-md-inv-brand-green {
+    color: color($colors, 'inv-brand-green');
+  }
+  .badge-md-danger {
+    color: color($colors, 'danger');
+  }
+  .badge-md-inv-brand-logo {
+    background: none;
+    color: color($colors, 'inv-brand-logo');
+    font-size: 1.7rem;
+    font-weight: normal;
+  }    
 }

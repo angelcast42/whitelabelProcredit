@@ -18,26 +18,14 @@
   <ion-list>
     <ion-item-divider color="light" class="inv-brand-logo">
         Balance
-        <ion-badge color="inv-brand-logo" item-end>{{account.payload.val().currency}} {{account.payload.val().balance}}</ion-badge>
+        <ion-badge color="inv-brand-logo" item-end>{{account.payload.val().currency}} {{account.payload.val().balance | number:'2.2-4'}}</ion-badge>
     </ion-item-divider>
-    <ion-item>
-      <h3>Tarjeta de crédito x3810</h3>
-      <p>Retiro #5519 <ion-badge class="small" color="inv-brand-orange">en proceso</ion-badge></p>
-      <p>Hace 8 días</p>
-      <ion-badge color="inv-brand-logo" item-end>Q 500.00</ion-badge>
+    <ion-item (click)="goTo('TransferPage', {transfer: transfer})" *ngFor="let transfer of transfers">
+      <h3>A{{transfer.payload.val().sendTo}}</h3>
+      <p>{{transfer.payload.val().auth}}q <ion-badge class="small" color="inv-brand-green">{{transfer.payload.val().status}}</ion-badge></p>
+      <p>{{transfer.payload.val().created | date}}</p>
+      <ion-badge color="inv-brand-logo" item-end>{{transfer.payload.val().currency}} {{transfer.payload.val().amount}}</ion-badge>
     </ion-item>
-    <ion-item>
-      <h3>Cuenta monetaria x2017</h3>
-      <p>Retiro #23017 <ion-badge class="small" color="inv-brand-green">realizado</ion-badge></p>
-      <p>Hace 14 días</p>
-      <ion-badge color="inv-brand-logo" item-end>Q 800.00</ion-badge>
-    </ion-item>
-    <ion-item>
-      <h3>Cuenta de ahorro x2036</h3>
-      <p>Retiro #19021 <ion-badge class="small" color="danger">expirado</ion-badge></p>
-      <p>Hace 26 días</p>
-      <ion-badge color="inv-brand-logo" item-end>Q 200.00</ion-badge>
-    </ion-item>    
 </ion-list>  
 </ion-content>
 <ion-footer class="container-keypad theme-transfer" no-padding>

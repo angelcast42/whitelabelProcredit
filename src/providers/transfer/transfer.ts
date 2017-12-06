@@ -20,7 +20,10 @@ export class TransferProvider {
   }
   getTransfers(uid) {
     return this.db.list(schema.Transfers, ref => ref.orderByChild('sendBy').equalTo(uid))
-  }  
+  }
+  getTransfersAccount(account) {
+    return this.db.list(schema.Transfers, ref => ref.orderByChild('sendFrom').equalTo(account))
+  }
   newTransfer(){
     this.reset()
     return this.transfer

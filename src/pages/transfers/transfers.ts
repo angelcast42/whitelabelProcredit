@@ -9,7 +9,7 @@ import { AuthProvider } from '../../providers/auth/auth'
   templateUrl: 'transfers.html',
 })
 export class TransfersPage {
-  transfers: any = {}
+  transfers: any
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -17,6 +17,7 @@ export class TransfersPage {
     private transferProvider: TransferProvider
   ) {
     this.transferProvider.getTransfers(this.authProvider.currentUserId()).snapshotChanges().subscribe(transfers=>{
+      console.log('transfers: ', transfers)
       this.transfers=[];
       transfers.forEach(eachTransfer => {
         let transfer:any;
