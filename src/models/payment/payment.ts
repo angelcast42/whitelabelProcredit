@@ -3,7 +3,7 @@ export interface PaymentModel {
   payTo: string;// account id of who receives the money
   payFrom: string;// account id of who sends the money
   payBy: string;// id of who sends the money
-  amount: string;// amount sended
+  amount: number;// amount sended
   currency: string;// currency of transaction
   type: string;// type of transaction
 
@@ -16,7 +16,7 @@ export class Payment implements PaymentModel {
   payTo: string;
   payFrom: string;
   payBy: string;
-  amount: string;
+  amount: number;
   currency: string;
   type: string;
 

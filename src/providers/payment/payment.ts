@@ -35,11 +35,15 @@ export class PaymentProvider {
     return this.item
   }
   // Create new third account
-  create(item: Payment): void {
+  create(item: Payment, transaction): void {
     item.created=firebase.database.ServerValue.TIMESTAMP
     item.modified=firebase.database.ServerValue.TIMESTAMP
+    firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).once('value',snapshot=>{
+      firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).child('balance').set(snapshot.val().balance-item.amount)
+    })    
     this.itemsRef.push(item)
   }
+
   // Update an third account
   update(key: string, value: any): void {
     this.itemsRef.update(key, value)
