@@ -9,7 +9,7 @@
     <ion-grid class="inv-compose" no-margin no-padding>
       <ion-row class="inv-compose-row" wrap align-items-center>
         <ion-col text-center>
-            <h3 class="inv-compose-title inv-font-regular">Ingresa PIN</h3>
+          <h3 class="inv-compose-title inv-font-regular">Ingresa el PIN de verificación</h3>
         </ion-col>
       </ion-row>
     </ion-grid>  
@@ -19,7 +19,7 @@
     <ion-row wrap>
       <ion-col class="keypad-info">
         <h1 class="inv-keypad-input inv-font-regular" text-center>
-            <ion-input no-margin no-padding type="password" text-center value="{{pin}}"></ion-input>
+            {{amount}}
         </h1>
       </ion-col>        
     </ion-row>
@@ -58,7 +58,6 @@
     </ion-row>
     <ion-row wrap>
       <ion-col width-33>
-        
       </ion-col>
       <ion-col width-33>
         <button ion-button color="white" class="inv-keypad-item" block clear  text-center large no-margin (click)="append('0')">0</button>

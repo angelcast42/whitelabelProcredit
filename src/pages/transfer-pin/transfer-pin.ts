@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AccountProvider } from '../../providers/account/account'
+import { AuthProvider } from '../../providers/auth/auth'
+import { UserProvider } from '../../providers/user/user';
+import { TransferProvider } from '../../providers/transfer/transfer';
+import { TransferModel } from '../../models/transfer/transfer'
 
 @IonicPage()
 @Component({
@@ -9,10 +14,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class TransferPinPage {
   amount: string = '';
   inputAmount: string = ''
+  transfer:TransferModel
+  transaction
+  code
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams
+    public navParams: NavParams,
+    private accountProvider: AccountProvider ,
+    public userProvider: UserProvider,       
+    public transferProvider: TransferProvider,                  
+    private authProvider: AuthProvider       
   ) {
+    this.transaction=navParams.data.transfer
+    this.transfer=this.transferProvider.newTransfer()
   }
   append(item: string) {
     if (item == 'backspace') {
@@ -60,7 +74,24 @@ export class TransferPinPage {
     }
   }
   goTo(page: string){
-    this.navCtrl.setRoot(page)
+    if(this.inputAmount===this.code){
+      this.accountProvider.getAccount(this.transaction.accountTo.payload.val().number).snapshotChanges().subscribe(accounts=>{
+        if(accounts.length>0){
+          this.userProvider.getUser().then(user=>{
+            if(accounts[0].payload.val().owner!=this.authProvider.currentUserId()){
+              this.userProvider.sendPush(accounts[0].payload.val().tokencf,'Transferencias','El usuario '+user.name+' te ha realizado una transferencia de '+this.transaction.amount+'.')
+            }
+          })
+        }
+        this.transfer.amount= this.transaction.amount
+        this.transfer.sendBy=this.authProvider.currentUserId()
+        this.transfer.sendFrom=this.transaction.accountFrom.payload.val().number
+        this.transferProvider.create(this.transfer,this.transaction)
+        this.navCtrl.setRoot(page)      
+        
+      })
+    }
   }
+
 }
 

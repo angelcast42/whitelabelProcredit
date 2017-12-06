@@ -6,7 +6,6 @@ export interface TransferModel {
   receiveBy: string;// id of who receives the money
   amount: number;// amount sended
   currency: string;// currency of transaction
-  type: string;// type of transaction
 
   created?: string | Object;
   modified?: string | Object;
@@ -20,7 +19,6 @@ export class Transfer implements TransferModel {
   receiveBy: string; 
   amount: number;
   currency: string;
-  type: string;
 
   created?: string | Object;
   modified?: string | Object;
