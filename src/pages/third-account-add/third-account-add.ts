@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth'
 import { ThirdaccountProvider } from '../../providers/thirdaccount/thirdaccount'
 import { Thirdaccount } from '../../models/thirdaccount/thirdaccount'
+import { UserProvider } from '../../providers/user/user';
 
 @IonicPage()
 @Component({
@@ -19,6 +20,7 @@ export class ThirdAccountAddPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private authProvider: AuthProvider,
+    public userProvider: UserProvider,      
     private thirdAccountProvider: ThirdaccountProvider
   ) {
     this.thirdaccount=this.thirdAccountProvider.newThirdAccount()
@@ -31,7 +33,12 @@ export class ThirdAccountAddPage {
     this.thirdaccount.type = this.type
     this.thirdaccount.number = this.number
     this.thirdaccount.status='active'
-    this.goTo('ThirdAccountPinPage', {thirdaccount: this.thirdaccount})
+    this.userProvider.getUser().then(user=>{
+      let code=this.userProvider.sendAccountMessage('+502',user.phone)
+      this.goTo('ThirdAccountPinPage', {thirdaccount: this.thirdaccount,code:code})
+    })
+
+    
   }
   goTo(page: string, params: any = {}){
     if (params === {}) {
