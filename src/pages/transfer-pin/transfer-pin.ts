@@ -88,8 +88,8 @@ export class TransferPinPage {
           this.userProvider.getUser().then(user=>{
             console.log("4")
             
-            receiver=accounts[0]
             if(accounts[0].payload.val().owner!=this.authProvider.currentUserId()){
+              receiver=accounts[0]              
               this.userProvider.sendPush(accounts[0].payload.val().tokencf,'Transferencias','El usuario '+user.name+' te ha realizado una transferencia de '+this.transaction.amount+'.')
             }
           })
