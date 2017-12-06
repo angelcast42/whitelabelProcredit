@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PaymentsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PaymentProvider } from '../../providers/payment/payment'
+import { AuthProvider } from '../../providers/auth/auth'
+import { Payment } from '../../models/payment/payment';
 
 @IonicPage()
 @Component({
@@ -14,12 +10,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'payments.html',
 })
 export class PaymentsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  payments
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private authProvider: AuthProvider,
+    private paymentProvider: PaymentProvider
+  ) {
+    this.paymentProvider.getPayments(this.authProvider.currentUserId()).snapshotChanges().subscribe(payments=>{
+      this.payments=[];
+      payments.forEach(eachPayment => {
+        let payment:any;
+        payment = eachPayment
+          this.payments.push(payment)
+      })      
+    })
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PaymentsPage');
+  goTo(page: string, params: any = {}){
+    if (params === {}) {
+      this.navCtrl.push(page)
+    } else {
+      this.navCtrl.push(page, params)
+    }
   }
-
 }

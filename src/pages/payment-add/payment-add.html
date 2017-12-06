@@ -1,18 +1,17 @@
-<!--
-  Generated template for the PaymentAddPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>PaymentAdd</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+  
+    <ion-navbar>
+      <ion-title text-center>Pagar servicio</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  <ion-content padding>
+    <ion-list>
+      <ion-item class="register-icon-token">
+        <ion-label floating class="inv-font-regular">
+          <ion-icon name="accountname"></ion-icon> Nombre de referencia
+        </ion-label>
+        <ion-input [(ngModel)]="name" class="register-input-pass" type="text"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-content>

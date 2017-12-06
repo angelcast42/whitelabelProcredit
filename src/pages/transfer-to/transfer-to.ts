@@ -62,7 +62,7 @@ export class TransferToPage {
   transferAdd(thirdaccount) {
     this.goTo('TransferAddPage', {
       accountFrom: this.accountFrom,
-      accountFrom: thirdaccount
+      accountTo: thirdaccount
     })
   }
 }

@@ -60,17 +60,17 @@ export class ThirdaccountProvider {
   }
   reset(){
     this.thirdaccount={
+      title:'',
       currency: 'C$',
       owner: '',
-      status: 'active',
-      title:'',
       bank:'',
-      type: 'monetaria',
       number: '',
       iban:'',
       swift:'',
+      type: 'monetaria',
       created: '',
-      modified: ''
+      modified: '',
+      status: 'active'
     }
   }
 }

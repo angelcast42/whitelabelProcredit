@@ -1,10 +1,9 @@
 export interface PaymentModel {
   $key?: string;
-  sendTo: string;// account id of who receives the money
-  sendFrom: string;// account id of who sends the money
-  sendBy: string;// id of who sends the money
-  receiveBy: string;// id of who receives the money
-  amount: number;// amount sended
+  payTo: string;// account id of who receives the money
+  payFrom: string;// account id of who sends the money
+  payBy: string;// id of who sends the money
+  amount: string;// amount sended
   currency: string;// currency of transaction
   type: string;// type of transaction
 
@@ -14,11 +13,10 @@ export interface PaymentModel {
 }
 export class Payment implements PaymentModel {
   $key?: string;
-  sendTo: string;
-  sendFrom: string;
-  sendBy: string;
-  receiveBy: string; 
-  amount: number;
+  payTo: string;
+  payFrom: string;
+  payBy: string;
+  amount: string;
   currency: string;
   type: string;
 

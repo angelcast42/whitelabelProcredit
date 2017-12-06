@@ -7,29 +7,12 @@
 </ion-header>
 <ion-content class="cashouts">
   <ion-list>
-    <ion-item (click)="goTo('PaymentPage')">
+    <ion-item (click)="goTo('PaymentPage', {payment: payment})" *ngFor="let payment of payments">
       <ion-avatar item-start>
-        <img src="assets/imgs/logo.png">
+        <img src="assets/imgs/{{payment.payload.val().logo}}.png">
       </ion-avatar>
-      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">Cuenta monetaria</h2>
-      <p class="inv-font-bold inv-color-gray-dark margin-left">xxxxxxx2017</p>
-      <ion-badge color="inv-brand-logo" item-end>Q 2500.00</ion-badge>
-    </ion-item>
-    <ion-item (click)="goTo('PaymentPage')">
-      <ion-avatar item-start>
-        <img src="assets/imgs/logo.png">
-      </ion-avatar>
-      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left" >Cuenta de ahorro</h2>
-      <p class="inv-font-bold inv-color-gray-dark margin-left">xxxxxxx2036</p>
-      <ion-badge color="inv-brand-logo" item-end>Q 800.00</ion-badge>
-    </ion-item>
-    <ion-item (click)="goTo('PaymentPage')">
-      <ion-avatar item-start>
-        <img src="assets/imgs/mastercard.jpg" class="logo-visa">
-      </ion-avatar>
-      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">Tarjeta de crédito</h2>
-      <p class="inv-font-bold inv-color-gray-dark margin-left">xxxxxxx3810</p>
-      <ion-badge color="inv-brand-logo" item-end>Q 4200.00</ion-badge>
+      <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">{{payment.payload.val().title}}</h2>
+      <p class="inv-font-bold inv-color-gray-dark margin-left">{{payment.payload.val().type}}-{{payment.payload.val().number}}</p>
     </ion-item>
   </ion-list>
 </ion-content>
