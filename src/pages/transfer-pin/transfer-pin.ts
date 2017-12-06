@@ -95,7 +95,6 @@ export class TransferPinPage {
           })
         }
         console.log("5")
-        
         this.transfer.amount= this.transaction.amount
         this.transfer.sendBy=this.authProvider.currentUserId()
         this.transfer.sendFrom=this.transaction.accountFrom.payload.val().number

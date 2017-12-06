@@ -45,10 +45,10 @@ export class TransferProvider {
       firebase.database().ref(schema.Accounts+'/'+transaction.accountFrom.key).child('balance').set(snapshot.val().balance-item.amount)
     })
     if(receiver){
-      firebase.database().ref(schema.Accounts+'/'+receiver.key).once('value',snapshot=>{
-        firebase.database().ref(schema.Accounts+'/'+receiver.key).child('balance').set(snapshot.val().balance+item.amount)
+      firebase.database().ref(schema.Accounts+'/'+receiver).once('value',snapshot=>{
+        firebase.database().ref(schema.Accounts+'/'+receiver).child('balance').set(snapshot.val().balance+item.amount)
       })      
-    }
+    }    
     this.itemsRef.push(item)
     return item
   }
