@@ -1,17 +1,16 @@
 <ion-header>
-  
     <ion-navbar>
       <ion-title text-center>Pagar servicio</ion-title>
     </ion-navbar>
-  
   </ion-header>
   <ion-content padding>
     <ion-list>
-      <ion-item class="register-icon-token">
-        <ion-label floating class="inv-font-regular">
-          <ion-icon name="accountname"></ion-icon> Nombre de referencia
-        </ion-label>
-        <ion-input [(ngModel)]="name" class="register-input-pass" type="text"></ion-input>
+      <ion-item (click)="goTo('PaymentCheckPage', {service: service})" *ngFor="let service of services">
+        <ion-avatar item-start>
+          <img src="{{service.payload.val().logo}}">
+        </ion-avatar>
+        <h2 class="inv-font-regular inf-font inv-color-gray-ligth margin-left">{{service.payload.val().title}}</h2>
+        <p class="inv-font-bold inv-color-gray-dark margin-left">{{service.payload.val().type}}</p>
       </ion-item>
     </ion-list>
   </ion-content>

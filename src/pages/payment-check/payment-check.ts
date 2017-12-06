@@ -14,12 +14,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'payment-check.html',
 })
 export class PaymentCheckPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  service
+  paymentQuery
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams
+  ) {
+    this.service = this.navParams.data.service
+    let n1=Math.floor(Math.random() * 9) + 1 ; 
+    let n2=Math.floor(Math.random() * 9) + 1 ; 
+    let n3=Math.floor(Math.random() * 9) + 1 ;
+    let amount=n1.toString()+n2.toString()+n3.toString()    
+    this.paymentQuery = {
+      amount: amount,
+      currency: 'C$'
+    }
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PaymentCheckPage');
+  goTo(page: string, params: any = {}){
+    if (params === {}) {
+      this.navCtrl.push(page)
+    } else {
+      this.navCtrl.push(page, params)
+    }
   }
-
 }

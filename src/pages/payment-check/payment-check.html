@@ -1,18 +1,44 @@
-<!--
-  Generated template for the PaymentCheckPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>PaymentCheck</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+<ion-header no-padding>
+    <ion-navbar text-center>
+      <ion-title class="inv-font-regular inv-color-gray-dark">
+        Confirmar Pago
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+    <ion-content class="inv-container" isScrolling="false" no-padding>
+          <ion-grid no-margin no-padding>
+            <ion-row class="inv-compose-row" wrap align-items-center>
+              <ion-col col-5 text-center>
+                <img class="inv-avatar" src="assets/imgs/logo.png" alt="Ahorro"/>            
+                <h3 class="inv-compose-name inv-font-regular">Cuenta monetaria</h3>
+              </ion-col>
+              <ion-col col-2 text-center icon-only>
+                <ion-icon name="ios-arrow-round-forward" color="inv-brand-logo"></ion-icon>
+              </ion-col>
+              <ion-col col-5 text-center>
+                <img class="inv-avatar" src="{{service.payload.val().logo}}" alt="{{service.payload.val().title}}"/>            
+                <h3 class="inv-compose-name inv-font-regular">{{service.payload.val().title}}</h3>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-list>
+              <ion-item class="inv-font-regular">
+                Monto
+                <ion-badge item-end color="inv-brand-logo" class="inv-font-regular">{{paymentQuery.currency}} {{paymentQuery.amount | number:'2.2-4'}}</ion-badge>
+              </ion-item>
+              <ion-item class="inv-font-regular">
+                Comisión
+                <ion-badge item-end color="danger" class="inv-font-regular">{{paymentQuery.currency}} 0.00</ion-badge>
+              </ion-item>
+                <ion-item class="inv-font-regular">
+                Total
+                <ion-badge item-end color="inv-text-light" class="inv-font-regular">{{paymentQuery.currency}} {{paymentQuery.amount | number:'2.2-4'}}</ion-badge>
+              </ion-item>
+            </ion-list>
+  </ion-content>
+  <ion-footer class="container-keypad theme-transfer" no-padding>
+      <button ion-button block large no-margin icon-end color="inv-brand-logo" class="animated bounce inv-font-regular" (click)="goTo('PaymentPinPage')">
+          Continuar <ion-icon name="ios-arrow-round-forward"></ion-icon>
+      </button>
+  </ion-footer>
+          
