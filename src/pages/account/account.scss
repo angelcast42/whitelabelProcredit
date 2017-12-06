@@ -1,11 +1,46 @@
 page-account {
   .inv{ 
     &-avatar {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
     &-compose-name {
       font-size: 2rem;
     }
+    &-brand {
+      &-logo {
+        color: color($colors, 'inv-brand-logo');
+        font-size: 1.7rem;
+        .badge-md-inv-brand-logo {
+          font-weight: bold;
+        }
+      }
+    }
   }
+  .small{
+    position: absolute;
+    right: 16px;
+    margin-top: 20px;
+    background: none;
+  }
+  .background {
+    background: color($colors, 'inv-background');
+  }
+  .badge-md-inv-brand-orange {
+    color: color($colors, 'inv-brand-orange');
+  }
+  .badge-md-inv-brand-green {
+    color: color($colors, 'inv-brand-green');
+  }
+  .badge-md-danger {
+    color: color($colors, 'danger');
+  }
+  .badge-md-inv-brand-logo {
+    background: none;
+    color: color($colors, 'inv-brand-logo');
+    font-size: 1.7rem;
+    font-weight: normal;
+  }  
 }
