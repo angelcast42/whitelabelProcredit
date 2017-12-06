@@ -65,7 +65,7 @@ export class PaymentProvider {
       payTo:'',
       payFrom:'',
       payBy: '',
-      amount: '',
+      amount: 0,
       currency: 'C$',
       type: 'pago',
       created: '',
