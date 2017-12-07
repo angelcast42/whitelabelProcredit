@@ -76,11 +76,11 @@ export class PaymentPinPage {
   }
   goTo(page: string){
     if(this.inputAmount===this.code){
-      this.accountProvider.getAccount(this.transaction.accountTo.payload.val().number).snapshotChanges().subscribe(accounts=>{
-        if(accounts.length>0){
+      this.accountProvider.getAccount(this.transaction.accountTo.payload.val().number).then(account=>{
+        if(account){
           this.userProvider.getUser().then(user=>{
-            if(accounts[0].payload.val().owner!=this.authProvider.currentUserId()){
-              this.userProvider.sendPush(accounts[0].payload.val().tokencf,'Pago de servicios','Pago realizado por un monto de '+this.transaction.amount+'.')
+            if(account.val().owner!=this.authProvider.currentUserId()){
+              this.userProvider.sendPush(account.val().tokencf,'Pago de servicios','Pago realizado por un monto de '+this.transaction.amount+'.')
             }
           })
         }

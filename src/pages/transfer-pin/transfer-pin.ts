@@ -76,21 +76,15 @@ export class TransferPinPage {
     }
   }
   goTo(page: string){
-    let receiver
-    console.log("1")
     if(this.inputAmount===this.code){
-      console.log("2")
       
-      this.accountProvider.getAccount(this.transaction.accountTo.payload.val().number).snapshotChanges().subscribe(accounts=>{
-        console.log("3")
+      this.accountProvider.getAccount(this.transaction.accountTo.payload.val().number).then(account=>{
         
-        if(accounts.length>0){
+        if(account){
           this.userProvider.getUser().then(user=>{
-            console.log("4")
             
-            if(accounts[0].payload.val().owner!=this.authProvider.currentUserId()){
-              receiver=accounts[0]              
-              this.userProvider.sendPush(accounts[0].payload.val().tokencf,'Transferencias','El usuario '+user.name+' te ha realizado una transferencia de '+this.transaction.amount+'.')
+            if(account.val().owner!=this.authProvider.currentUserId()){              
+              this.userProvider.sendPush(account.val().tokencf,'Transferencias','El usuario '+user.name+' te ha realizado una transferencia de '+this.transaction.amount+'.')
             }
           })
         }
@@ -98,7 +92,7 @@ export class TransferPinPage {
         this.transfer.amount= this.transaction.amount
         this.transfer.sendBy=this.authProvider.currentUserId()
         this.transfer.sendFrom=this.transaction.accountFrom.payload.val().number
-        this.transfer=this.transferProvider.create(this.transfer,this.transaction,receiver)
+        this.transfer=this.transferProvider.create(this.transfer,this.transaction,account.key)
         this.navCtrl.setRoot(page,{transfer:this.transfer,transaction:this.transaction})
       })
     }

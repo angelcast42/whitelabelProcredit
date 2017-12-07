@@ -28,11 +28,19 @@ export class AccountProvider {
     })
   }
   // Return an observable account
-  getAccount(number) {
-    return this.db.list(schema.Accounts, ref => ref.orderByChild('number').equalTo(number))
-    
-  }
 
+  getAccount(number): Promise<any> {
+    return new Promise( (resolve, reject) => {
+      firebase.database().ref('/accounts')
+      .orderByChild("number")
+      .equalTo(number).once('value',snapshot=>{
+      snapshot.forEach(snap=>{
+          resolve(snap);
+          return false;
+      });
+      });
+    });
+  }
   getAccounts(owner: string) {
     return this.db.list(schema.Accounts, ref => ref.orderByChild('owner').equalTo(owner))
   }

@@ -29,6 +29,7 @@ export class TransferProvider {
     return this.transfer
   }
   create(item,transaction,receiver){
+    console.log("actualizado")
     item.created=firebase.database.ServerValue.TIMESTAMP
     item.modified=firebase.database.ServerValue.TIMESTAMP
     let n1=Math.floor(Math.random() * 9) + 1 ; 
@@ -46,6 +47,7 @@ export class TransferProvider {
     })
     if(receiver){
       firebase.database().ref(schema.Accounts+'/'+receiver).once('value',snapshot=>{
+        console.log("balance",snapshot.val().balance)
         firebase.database().ref(schema.Accounts+'/'+receiver).child('balance').set(snapshot.val().balance+item.amount)
       })      
     }    

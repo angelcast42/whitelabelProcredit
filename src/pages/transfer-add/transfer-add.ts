@@ -71,7 +71,7 @@ export class TransferAddPage {
   }
   goTo(page: string, params){
     if (!params) {
-      this.transfer.amount= this.inputAmount
+      this.transfer.amount= +this.inputAmount
       this.navCtrl.push(page,{transfer:this.transfer})
     } else {
       this.navCtrl.push(page, params)
