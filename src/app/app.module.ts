@@ -28,6 +28,7 @@ import { TransferProvider } from '../providers/transfer/transfer';
 import { CashoutProvider } from '../providers/cashout/cashout';
 import { PaymentProvider } from '../providers/payment/payment';
 import { ServiceProvider } from '../providers/service/service';
+import { SimProvider } from '../providers/sim/sim'
 
 import { Firebase } from '@ionic-native/firebase'
 
@@ -65,7 +66,9 @@ import { Firebase } from '@ionic-native/firebase'
     CashoutProvider,
     PaymentProvider,
     ServiceProvider    , 
-    Firebase
+    Firebase    , 
+    SimProvider
+    
     
   ]
 })
