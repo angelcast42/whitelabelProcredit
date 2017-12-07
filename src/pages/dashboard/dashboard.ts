@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AccountProvider } from '../../providers/account/account'
 import { AuthProvider } from '../../providers/auth/auth'
+import { SimProvider } from '../../providers/sim/sim'
 
 @IonicPage()
 @Component({
@@ -14,8 +15,12 @@ export class DashboardPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private accountProvider: AccountProvider,
-    private authProvider: AuthProvider
+    private authProvider: AuthProvider,
+    private simProvider: SimProvider
   ) {
+    this.simProvider.getSim().then(info=>{
+      console.log(info)
+    })
     this.accountProvider.getAccounts(this.authProvider.currentUserId()).snapshotChanges().subscribe(accounts=>{
       this.balance = 0
       accounts.forEach(eachAccount => {
