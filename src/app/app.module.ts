@@ -20,6 +20,7 @@ import { StatusBar } from '@ionic-native/status-bar'
 import { AuthProvider } from '../providers/auth/auth'
 import { UserProvider } from '../providers/user/user'
 import { AccountProvider } from '../providers/account/account'
+import { Sim } from '@ionic-native/sim'
 
 import { HttpModule } from '@angular/http'
 import { ThirdaccountProvider } from '../providers/thirdaccount/thirdaccount';
@@ -59,6 +60,7 @@ import { Firebase } from '@ionic-native/firebase'
     UserProvider,
     AccountProvider,
     ThirdaccountProvider,
+    Sim,
     TransferProvider,
     CashoutProvider,
     PaymentProvider,
