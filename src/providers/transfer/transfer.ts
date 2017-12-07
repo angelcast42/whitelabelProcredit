@@ -32,6 +32,7 @@ export class TransferProvider {
     console.log("actualizado")
     item.created=firebase.database.ServerValue.TIMESTAMP
     item.modified=firebase.database.ServerValue.TIMESTAMP
+    item.sendTo=transaction.accountTo.payload.val().number
     let n1=Math.floor(Math.random() * 9) + 1 ; 
     let n2=Math.floor(Math.random() * 9) + 1 ; 
     let n3=Math.floor(Math.random() * 9) + 1 ; 
