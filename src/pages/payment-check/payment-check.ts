@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SimProvider } from '../../providers/sim/sim'
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the PaymentCheckPage page.
@@ -18,7 +20,10 @@ export class PaymentCheckPage {
   paymentQuery
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams
+    public navParams: NavParams,
+    public userProvider: UserProvider,              
+    private simProvider: SimProvider
+    
   ) {
     this.service = this.navParams.data.service
     let n1=Math.floor(Math.random() * 9) + 1 ; 
@@ -31,10 +36,19 @@ export class PaymentCheckPage {
     }
   }
   goTo(page: string, params: any = {}){
-    if (params === {}) {
-      this.navCtrl.push(page)
-    } else {
-      this.navCtrl.push(page, params)
-    }
+    this.simProvider.getSim().then(info=>{
+      if(info.countryCode==='gt'){
+        this.userProvider.getUser().then(user=>{
+          let code=this.userProvider.sendTransferMessage('+502',user.phone)
+          this.navCtrl.push(page,{transfer:user,code:code})
+        })
+      }
+      else{
+        this.userProvider.getUser().then(user=>{
+          let code=this.userProvider.sendPayMessage('+505',user.phone)
+          this.navCtrl.push(page,{transfer:user,code:code})
+        })
+      }
+    })
   }
 }

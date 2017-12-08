@@ -71,7 +71,7 @@ export class RegisterPhonePage {
         if (amount[1].length < 2 && item != '.'){
           this.inputAmount += item;
         }
-      }
+      } 
   
       this.amount = Number(this.inputAmount);
     }
@@ -83,14 +83,14 @@ export class RegisterPhonePage {
     }
     else{
       this.simProvider.getSim().then(info=>{
-        if(info.countryCode==='ni'){
+        if(info.countryCode==='gt'){
           this.user.phone=this.inputAmount
-          this.user.code=this.userProvider.sendMessage('+505',this.user.phone)
+          this.user.code=this.userProvider.sendMessage('+502',this.user.phone)
           this.navCtrl.push('RegisterPhoneConfirmPage',{user:this.user})
         }
         else{
           this.user.phone=this.inputAmount
-          this.user.code=this.userProvider.sendMessage('+502',this.user.phone)
+          this.user.code=this.userProvider.sendMessage('+505',this.user.phone)
           this.navCtrl.push('RegisterPhoneConfirmPage',{user:this.user})
         }
       })

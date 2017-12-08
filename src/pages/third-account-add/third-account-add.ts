@@ -4,6 +4,7 @@ import { AuthProvider } from '../../providers/auth/auth'
 import { ThirdaccountProvider } from '../../providers/thirdaccount/thirdaccount'
 import { Thirdaccount } from '../../models/thirdaccount/thirdaccount'
 import { UserProvider } from '../../providers/user/user';
+import { SimProvider } from '../../providers/sim/sim'
 
 @IonicPage()
 @Component({
@@ -21,7 +22,9 @@ export class ThirdAccountAddPage {
     public navParams: NavParams,
     private authProvider: AuthProvider,
     public userProvider: UserProvider,      
-    private thirdAccountProvider: ThirdaccountProvider
+    private thirdAccountProvider: ThirdaccountProvider,
+    private simProvider: SimProvider
+    
   ) {
     this.thirdaccount=this.thirdAccountProvider.newThirdAccount()
   }
@@ -33,10 +36,21 @@ export class ThirdAccountAddPage {
     this.thirdaccount.type = this.type
     this.thirdaccount.number = this.number
     this.thirdaccount.status='active'
-    this.userProvider.getUser().then(user=>{
-      let code=this.userProvider.sendAccountMessage('+502',user.phone)
-      this.goTo('ThirdAccountPinPage', {thirdaccount: this.thirdaccount,code:code})
+    this.simProvider.getSim().then(info=>{
+      if(info.countryCode==='gt'){
+        this.userProvider.getUser().then(user=>{
+          let code=this.userProvider.sendAccountMessage('+502',user.phone)
+          this.goTo('ThirdAccountPinPage', {thirdaccount: this.thirdaccount,code:code})
+        })
+      }
+      else{
+        this.userProvider.getUser().then(user=>{
+          let code=this.userProvider.sendAccountMessage('+505',user.phone)
+          this.goTo('ThirdAccountPinPage', {thirdaccount: this.thirdaccount,code:code})
+        })
+      }
     })
+
 
     
   }
