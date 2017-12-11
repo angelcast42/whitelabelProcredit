@@ -8,17 +8,22 @@ import { Observable } from 'rxjs/Rx'
 import { schema } from '../../app/app.constants'
 import { User } from '../../models/user/user'
 import { ToastController} from 'ionic-angular'
+import { AccountProvider } from '../../providers/account/account'
+import { AccountModel } from '../../models/account/account'
 
 @Injectable()
 export class AuthProvider {
 
   authState: any = null;
   userRef: AngularFireObject<any>
-
+  account:AccountModel
+  
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
-    private toastCtrl: ToastController    
+    private toastCtrl: ToastController,
+    private accountProvider: AccountProvider    
+    
   ) {
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth
@@ -51,6 +56,12 @@ export class AuthProvider {
     return this.afAuth.auth.createUserWithEmailAndPassword(detail.email, detail.password)
       .then((user) => {
         this.authState = user
+        this.account.balance=0;
+        this.account.currency='C$'
+        this.account.owner=this.currentUserId()
+        this.account.status='active'
+        this.account.title=detail.phone
+        this.account.token=detail.token
         this.updateUserData(detail)
       })
       .catch(error => console.log(error))
