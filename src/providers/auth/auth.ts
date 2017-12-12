@@ -25,6 +25,8 @@ export class AuthProvider {
     private accountProvider: AccountProvider    
     
   ) {
+    this.account=this.accountProvider.newAccount()
+    
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth
     });    
