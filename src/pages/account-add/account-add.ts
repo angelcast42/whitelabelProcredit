@@ -13,7 +13,7 @@ export class AccountAddPage {
   name
   token
   account:AccountModel
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl : NavController, public navParams: NavParams,
     private authProvider: AuthProvider,
     private accountProvider: AccountProvider  ) {
       this.account=this.accountProvider.newAccount()
