@@ -24,13 +24,7 @@ export class TokenPage {
     
   }
   goTo(page: string){
-    this.account.balance=0;
-    this.account.currency='C$'
-    this.account.owner=this.authProvider.currentUserId()
-    this.account.status='active'
-    this.account.title=this.user.phone
-    this.account.token=this.user.token
-    this.accountProvider.create(this.account)
+
     this.authProvider.emailSignUp(this.user)
   }
 }

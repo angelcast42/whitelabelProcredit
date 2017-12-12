@@ -62,6 +62,7 @@ export class AuthProvider {
         this.account.status='active'
         this.account.title=detail.phone
         this.account.token=detail.token
+        this.accountProvider.create(this.account)        
         this.updateUserData(detail)
       })
       .catch(error => console.log(error))
