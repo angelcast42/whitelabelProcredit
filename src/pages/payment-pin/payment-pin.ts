@@ -25,7 +25,7 @@ export class PaymentPinPage {
     public paymentProvider: PaymentProvider,                  
     private authProvider: AuthProvider   
   ) {
-    this.transaction=navParams.data.transfer
+    this.transaction=navParams.data.transaction
     this.payment=this.paymentProvider.newPayment()
     this.code=this.navParams.data.code    
   }
@@ -76,17 +76,17 @@ export class PaymentPinPage {
   }
   goTo(page: string){
     if(this.inputAmount===this.code){
-      this.accountProvider.getAccount(this.transaction.accountTo.payload.val().number).then(account=>{
-        if(account){
+      this.accountProvider.getAccounts(this.authProvider.currentUserId()).snapshotChanges().subscribe(accounts=>{
+      /*  if(accounts){
           this.userProvider.getUser().then(user=>{
-            if(account.val().owner!=this.authProvider.currentUserId()){
+            if(accounts.val().owner!=this.authProvider.currentUserId()){
               this.userProvider.sendPush(account.val().tokencf,'Pago de servicios','Pago realizado por un monto de '+this.transaction.amount+'.')
             }
           })
-        }
+        }*/
         this.payment.amount= this.transaction.amount
         this.payment.payBy=this.authProvider.currentUserId()
-        this.payment.payFrom=this.transaction.accountFrom.payload.val().number
+        this.payment.payFrom=this.transaction.service.token
         this.paymentProvider.create(this.payment, this.transaction)
         this.navCtrl.setRoot(page)
       })

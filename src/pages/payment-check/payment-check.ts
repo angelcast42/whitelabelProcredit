@@ -18,6 +18,7 @@ import { UserProvider } from '../../providers/user/user';
 export class PaymentCheckPage {
   service
   paymentQuery
+  amount
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -29,9 +30,9 @@ export class PaymentCheckPage {
     let n1=Math.floor(Math.random() * 9) + 1 ; 
     let n2=Math.floor(Math.random() * 9) + 1 ; 
     let n3=Math.floor(Math.random() * 9) + 1 ;
-    let amount=n1.toString()+n2.toString()+n3.toString()    
+    this.amount=n1.toString()+n2.toString()+n3.toString()    
     this.paymentQuery = {
-      amount: amount,
+      amount: this.amount,
       currency: 'C$'
     }
   }
@@ -39,14 +40,26 @@ export class PaymentCheckPage {
     this.simProvider.getSim().then(info=>{
       if(info.countryCode==='gt'){
         this.userProvider.getUser().then(user=>{
+          let transaction={
+            service:this.service,
+            user: user,
+            amount:this.amount,
+            currency: 'C$'
+          }
           let code=this.userProvider.sendTransferMessage('+502',user.phone)
-          this.navCtrl.push(page,{transfer:user,code:code})
+          this.navCtrl.push(page,{transaction:transaction,code:code})
         })
       }
       else{
         this.userProvider.getUser().then(user=>{
+          let transaction={
+            service:this.service,
+            user: user,
+            amount:this.amount,
+            currency: 'C$'
+          }
           let code=this.userProvider.sendPayMessage('+505',user.phone)
-          this.navCtrl.push(page,{transfer:user,code:code})
+          this.navCtrl.push(page,{transaction:transaction,code:code})
         })
       }
     })
