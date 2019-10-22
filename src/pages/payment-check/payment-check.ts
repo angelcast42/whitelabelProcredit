@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SimProvider } from '../../providers/sim/sim'
 import { UserProvider } from '../../providers/user/user';
+import { AccountProvider } from '../../providers/account/account'
+import { AuthProvider } from '../../providers/auth/auth'
 
 /**
  * Generated class for the PaymentCheckPage page.
@@ -19,13 +21,20 @@ export class PaymentCheckPage {
   service
   paymentQuery
   amount
+  account
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public userProvider: UserProvider,              
+    public userProvider: UserProvider, 
+    private accountProvider: AccountProvider ,
+    private authProvider: AuthProvider   ,    
     private simProvider: SimProvider
     
   ) {
+    this.accountProvider.getAccounts(this.authProvider.currentUserId()).snapshotChanges().subscribe(accounts=>{
+      this.account=accounts[0]  
+      console.log("account",this.account)    
+    })      
     this.service = this.navParams.data.service
     let n1=Math.floor(Math.random() * 9) + 1 ; 
     let n2=Math.floor(Math.random() * 9) + 1 ; 

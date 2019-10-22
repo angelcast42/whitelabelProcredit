@@ -85,7 +85,7 @@ export class PaymentPinPage {
           })
         }*/
         this.payment.amount= this.transaction.amount
-        this.payment.payBy=this.authProvider.currentUserId()
+        this.payment.payBy=accounts[0].payload.val().number
         this.payment.payFrom=this.transaction.service.token
         this.paymentProvider.create(this.payment, this.transaction)
         this.navCtrl.setRoot(page)
